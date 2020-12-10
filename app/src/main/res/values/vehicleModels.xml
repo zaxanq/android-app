@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vehicleModelsArray">
+<!--        TODO: probably need to add multiple string-arrays here depending on the selected brand -->
+        <item>@string/secondScreen_selectModel</item>
+        <item>Audi</item>
+    </string-array>
+</resources>

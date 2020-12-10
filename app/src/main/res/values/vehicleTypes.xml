@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vehicleTypesArray">
+<!--        TODO: Add translations-->
+        <item>@string/secondScreen_selectType</item>
+        <item>Samochód osobowy</item>
+        <item>Motocykl</item>
+        <item>Autokar</item>
+        <item>Traktor</item>
+    </string-array>
+</resources>
