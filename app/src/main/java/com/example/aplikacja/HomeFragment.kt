@@ -14,21 +14,21 @@ import androidx.navigation.fragment.findNavController
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.second_screen, container, false)
+        return inflater.inflate(R.layout.home_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_HomeFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_FirstFragment)
         }
 
         fun loadSpinnerResources(spinnerId: Spinner, resources: Int) {
@@ -57,7 +57,6 @@ class SecondFragment : Fragment() {
 // this is supposed to alter ArrayAdapter and disable first item of resources
 //class SpinnerAdapter(context: Context, resource: Int, list: ArrayList<String>)
 //    : ArrayAdapter<String>(context, resource, list) {
-//
 //
 //    override fun isEnabled(position: Int): Boolean {
 //        // select position to disable

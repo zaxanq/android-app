@@ -8,6 +8,13 @@
     <!-- Wspólne -->
     <string name="common_confirm">Potwierdź</string>
     <string name="common_add">Dodaj</string>
+    <string name="common_selectType">Wybierz rodzaj</string>
+    <string name="common_selectBrand">Wybierz markę</string>
+    <string name="common_selectModel">Wybierz model</string>
+    <string name="common_car">Samochód</string>
+    <string name="common_motorcycle">Motocykl</string>
+    <string name="common_truck">Ciężarówka</string>
+    <string name="common_coach">Autokar</string>
 
     <!-- Pierwszy widok -->
     <string name="firstScreen_step1of2">Krok 1/2</string>
@@ -20,9 +27,6 @@
     <!-- Drugi widok -->
     <string name="secondScreen_step2of2">Krok 2/2</string>
     <string name="secondScreen_addFirstVehicleTitle">Cześć! Jak się nazywasz?</string>
-    <string name="secondScreen_selectType">Wybierz rodzaj</string>
-    <string name="secondScreen_selectBrand">Wybierz markę</string>
-    <string name="secondScreen_selectModel">Wybierz model</string>
     <string name="secondScreen_addLicensePlate">Wpisz rejestrację pojazdu</string>
     <string name="secondScreen_addMeterStatus">Wpisz stan licznika przebiegu</string>
     <string name="secondScreen_addPhoto">Dodaj zdjęcie</string>

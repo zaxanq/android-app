@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="vehicleBrandsArray">
-        <item>@string/secondScreen_selectBrand</item>
+        <item>@string/common_selectBrand</item>
         <item>Audi</item>
-        <item>BMW</item>
-        <item>Citroen</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
         <item>Mazda</item>
         <item>Mercedes</item>
-        <item>Opel</item>
-        <item>Renault</item>
-        <item>Seat</item>
-        <item>Skoda</item>
         <item>Toyota</item>
-        <item>Volkswagen</item>
         <item>Volvo</item>
     </string-array>
 </resources>
