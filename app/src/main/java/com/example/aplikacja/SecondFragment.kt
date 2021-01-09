@@ -1,20 +1,27 @@
 package com.example.aplikacja
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import java.io.File
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
+    private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
+    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+    private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
+    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+    private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+    private val warningText = view?.findViewById<TextView>(R.id.secondScreen_warning)
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -27,14 +34,54 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val selectTypeSpinnerText: String = selectTypeSpinner?.selectedItem.toString()
+        val selectBrandSpinnerText: String = selectBrandSpinner?.selectedItem.toString()
+        val selectModelSpinnerText: String = selectModelSpinner?.selectedItem.toString()
+        val addLicensePlateInputText: String = addLicensePlateInput?.text.toString().trim()
+        val addMeterStatusInputText: String = addMeterStatusInput?.text.toString().trim()
+
         view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_HomeFragment)
+            if (selectTypeSpinnerText.trim().length <= 0) {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Error")
+                builder.setMessage("Wybierz typ pojazdu!")
+                builder.setIcon(R.drawable.ic_launcher_background)
+
+                builder.setPositiveButton("OK") { dialog, which ->
+                    dialog.dismiss()
+                }
+            }
+
+
+            else if(selectBrandSpinnerText.trim().length<=1) {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Error")
+                builder.setMessage("Wybierz markę pojazdu!")
+                builder.setIcon(R.drawable.ic_launcher_background)
+
+                builder.setPositiveButton("OK") { dialog, which ->
+                    dialog.dismiss()
+                }
+            }
+
+            else if(selectModelSpinnerText.trim().length<=1) {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Error")
+                builder.setMessage("Wybierz model pojazdu!")
+                builder.setIcon(R.drawable.ic_launcher_background)
+
+                builder.setPositiveButton("OK") { dialog, which ->
+                    dialog.dismiss()
+                }
+            }
+            else{
+                File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
+                findNavController().navigate(R.id.action_SecondFragment_to_HomeFragment)
+            }
         }
 
-        fun loadSpinnerResources(spinnerId: Spinner, resources: Int) {
+        fun loadSpinnerResources(spinner: Spinner, resources: Int) {
             // load brands list
-            // find and declare brand spinner
-            val spinner: Spinner = spinnerId
             // get array of brands from resource (vehicleBrands.xml)
             ArrayAdapter.createFromResource(
                 requireActivity(), // ?
@@ -53,14 +100,3 @@ class SecondFragment : Fragment() {
 
     }
 }
-
-// this is supposed to alter ArrayAdapter and disable first item of resources
-//class SpinnerAdapter(context: Context, resource: Int, list: ArrayList<String>)
-//    : ArrayAdapter<String>(context, resource, list) {
-//
-//
-//    override fun isEnabled(position: Int): Boolean {
-//        // select position to disable
-//        return position != 0
-//    }
-//}

@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="vehicleModelsArray">
-<!--        TODO: probably need to add multiple string-arrays here depending on the selected brand -->
+        <!--        TODO: probably need to add multiple string-arrays here depending on the selected brand -->
         <item>@string/common_selectModel</item>
-        <item>Audi</item>
+        //Audi
+        <item>A4</item>
+        <item>RS6</item>
+        <item>Q8</item>
+        <item>R8</item>
+        <item>A1</item>
+
+        //Mazda
+        <item>787B</item>
+        <item>RX7</item>
+        <item>RX8</item>
+        <item>MX5</item>
+        <item>6</item>
+
+        //Mercedes
+        <item>W11</item>
+        <item>300SL</item>
+        <item>Project One</item>
+        <item>SLR</item>
+        <item>W463</item>
+
+        //Toyota
+        <item>Supra</item>
+        <item>Camry</item>
+        <item>Yaris</item>
+        <item>Hilux</item>
+        <item>Prius</item>
+
+        //Volvo
+        <item>S60</item>
+        <item>S90</item>
+        <item>OV4</item>
+        <item>XC90</item>
+        <item>XC40</item>
+
     </string-array>
 </resources>
