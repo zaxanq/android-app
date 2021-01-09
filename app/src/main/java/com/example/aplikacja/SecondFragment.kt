@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.io.File
 
 
 /**
@@ -75,7 +74,7 @@ class SecondFragment : Fragment() {
                 }
             }
             else{
-                File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
+//                File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
                 findNavController().navigate(R.id.action_SecondFragment_to_HomeFragment)
             }
         }
