@@ -16,13 +16,18 @@
     <string name="common_truck">Ciężarówka</string>
     <string name="common_coach">Autokar</string>
 
+    <!-- Errory -->
+    <string name="warning_passwordsAreNotIdentical">Podane hasła nie są identyczne.</string>
+    <string name="warning_nameTooShort">Podaj dłuższe imię.</string>
+    <string name="warning_passwordTooShort">Hasło jest za krótkie.</string>
+
     <!-- Pierwszy widok -->
     <string name="firstScreen_step1of2">Krok 1/2</string>
     <string name="firstScreen_whatsYourName">Cześć! Jak się nazywasz?</string>
     <string name="firstScreen_namePlaceholder">Podaj swoje imię...</string>
     <string name="firstScreen_setYourPassword">Ustaw swoje hasło</string>
     <string name="firstScreen_passwordPlaceholder">Wpisz hasło...</string>
-    <string name="firstScreen_repeatRasswordPlaceholder">Potwierdź hasło...</string>
+    <string name="firstScreen_repeatPasswordPlaceholder">Potwierdź hasło...</string>
 
     <!-- Drugi widok -->
     <string name="secondScreen_step2of2">Krok 2/2</string>
