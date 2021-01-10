@@ -26,4 +26,20 @@
     <string name="secondScreen_addLicensePlate">Wpisz rejestrację pojazdu</string>
     <string name="secondScreen_addMeterStatus">Wpisz stan licznika przebiegu</string>
     <string name="secondScreen_addPhoto">Dodaj zdjęcie</string>
+
+    <!-- Ekran główny -->
+    <string name="mainScreen_title">Ekran główny</string>
+    <string name="mainScreen_refuelingTitle">Tankowanie</string>
+    <string name="mainScreen_avgConsumptionLabel">średnie spalanie</string>
+    <string name="mainScreen_lastConsumptionLabel">ostatnie spalanie</string>
+    <string name="mainScreen_avgPriceLabel">średnia cena paliwa</string>
+    <string name="mainScreen_lastPriceLabel">ostatnia cena paliwa</string>
+
+    <string name="mainScreen_nextMonthTitle">Nadchodzący miesiąc</string>
+    <string name="mainScreen_insuranceLabel">Ubezpieczenie</string>
+    <string name="mainScreen_serviceLabel">Serwis</string>
+    <string name="menuDescription">Menu</string>
+    <string name="logoDescription">Logo</string>
+
+
 </resources>

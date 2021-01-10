@@ -36,7 +36,7 @@ class FirstFragment : Fragment() {
         val fileExists2 = file2.exists()
 
         return if (fileExists and fileExists2){
-            inflater.inflate(R.layout.home_screen, container, false)
+            inflater.inflate(R.layout.ekran_glowny, container, false)
         } else {
             inflater.inflate(R.layout.first_screen, container, false)
         }
@@ -67,7 +67,7 @@ class FirstFragment : Fragment() {
                 this.checkIfPasswordsAreIdentical()
             ) {
 //                saveDataToFiles();
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                findNavController().navigate(R.id.action_First_to_Second)
             }
         }
     }
