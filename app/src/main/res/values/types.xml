@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type_car">Samochód</string>
+    <string name="type_motorcycle">Motocykl</string>
+    <string name="type_truck">Ciężarówka</string>
+</resources>

@@ -11,17 +11,6 @@
     <string name="common_selectType">Wybierz rodzaj</string>
     <string name="common_selectBrand">Wybierz markę</string>
     <string name="common_selectModel">Wybierz model</string>
-    <string name="common_car">Samochód</string>
-    <string name="common_motorcycle">Motocykl</string>
-    <string name="common_truck">Ciężarówka</string>
-    <string name="common_coach">Autokar</string>
-
-    <!-- Errory -->
-    <string name="warning_passwordsAreNotIdentical">Podane hasła nie są identyczne.</string>
-    <string name="warning_nameTooShort">Podaj dłuższe imię.</string>
-    <string name="warning_nameIsRequired">Imię jest wymagane.</string>
-    <string name="warning_passwordTooShort">Hasło jest za krótkie.</string>
-    <string name="warning_passwordIsRequired">Hasło jest wymagane.</string>
 
     <!-- Pierwszy widok -->
     <string name="firstScreen_step1of2">Krok 1/2</string>
@@ -33,7 +22,7 @@
 
     <!-- Drugi widok -->
     <string name="secondScreen_step2of2">Krok 2/2</string>
-    <string name="secondScreen_addFirstVehicleTitle">Cześć! Jak się nazywasz?</string>
+    <string name="secondScreen_addFirstVehicleTitle">Uzupełnij pierwszy pojazd</string>
     <string name="secondScreen_addLicensePlate">Wpisz rejestrację pojazdu</string>
     <string name="secondScreen_addMeterStatus">Wpisz stan licznika przebiegu</string>
     <string name="secondScreen_addPhoto">Dodaj zdjęcie</string>

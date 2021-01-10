@@ -1,42 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="vehicleModelsArray">
-        <!--        TODO: probably need to add multiple string-arrays here depending on the selected brand -->
+    // Cars
+    <string-array name="vehicleModelsArray_Audi">
         <item>@string/common_selectModel</item>
-        //Audi
         <item>A4</item>
         <item>RS6</item>
         <item>Q8</item>
         <item>R8</item>
         <item>A1</item>
+    </string-array>
 
-        //Mazda
+    <string-array name="vehicleModelsArray_Mazda">
+        <item>@string/common_selectModel</item>
         <item>787B</item>
         <item>RX7</item>
         <item>RX8</item>
         <item>MX5</item>
         <item>6</item>
+    </string-array>
 
-        //Mercedes
+    <string-array name="vehicleModelsArray_Mercedes">
+        <item>@string/common_selectModel</item>
         <item>W11</item>
         <item>300SL</item>
         <item>Project One</item>
         <item>SLR</item>
         <item>W463</item>
+    </string-array>
 
-        //Toyota
+    <string-array name="vehicleModelsArray_Toyota">
+        <item>@string/common_selectModel</item>
         <item>Supra</item>
         <item>Camry</item>
         <item>Yaris</item>
         <item>Hilux</item>
         <item>Prius</item>
+    </string-array>
 
-        //Volvo
+    <string-array name="vehicleModelsArray_Volvo">
+        <item>@string/common_selectModel</item>
         <item>S60</item>
         <item>S90</item>
         <item>OV4</item>
         <item>XC90</item>
         <item>XC40</item>
+    </string-array>
 
+
+    // Motorcycles
+    <string-array name="vehicleModelsArray_BMW">
+        <item>@string/common_selectModel</item>
+        <item>M 1000 RR</item>
+        <item>R 1250 RT</item>
+        <item>F 900 R</item>
+        <item>K 1600 GT</item>
+        <item>R 18</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_HarleyDavidson">
+        <item>@string/common_selectModel</item>
+        <item>Superflow 1200T</item>
+        <item>Roadster</item>
+        <item>Iron 1200</item>
+        <item>Street Rod</item>
+        <item>Street 750</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_Honda">
+        <item>@string/common_selectModel</item>
+        <item>Fireblade</item>
+        <item>CBR650R</item>
+        <item>GL1800 Gold Wing</item>
+        <item>CB500F</item>
+        <item>Forza 350</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_Kawasaki">
+        <item>@string/common_selectModel</item>
+        <item>Ninja 1000</item>
+        <item>ZZR600</item>
+        <item>KX450F</item>
+        <item>KLR600</item>
+        <item>Vulcan 700</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_Suzuki">
+        <item>@string/common_selectModel</item>
+        <item>GSX-1300R Hayabusa</item>
+        <item>GV1400 Cavalcade</item>
+        <item>GSR750</item>
+        <item>GSX-S1000</item>
+        <item>AY50 Katana</item>
+    </string-array>
+
+
+    // Trucks
+    <string-array name="vehicleModelsArray_DAF">
+        <item>@string/common_selectModel</item>
+        <item>XF105</item>
+        <item>95XF</item>
+        <item>LF</item>
+        <item>CF</item>
+        <item>XF</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_MAN">
+        <item>@string/common_selectModel</item>
+        <item>F2000</item>
+        <item>TGA</item>
+        <item>TGM</item>
+        <item>TGX</item>
+        <item>TGS</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_Scania">
+        <item>@string/common_selectModel</item>
+        <item>P320</item>
+        <item>R500</item>
+        <item>R730</item>
+        <item>G400</item>
+        <item>S770</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_Iveco">
+        <item>@string/common_selectModel</item>
+        <item>Eurocargo</item>
+        <item>Stralis</item>
+        <item>Daily</item>
+        <item>Trakker</item>
+        <item>EuroStar</item>
+    </string-array>
+
+    <string-array name="vehicleModelsArray_VolvoTruck">
+        <item>@string/common_selectModel</item>
+        <item>FH12</item>
+        <item>FH16</item>
+        <item>FM12</item>
+        <item>FL6</item>
+        <item>FS7</item>
     </string-array>
 </resources>
