@@ -27,7 +27,7 @@ class SecondFragment : Fragment() {
         view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
             if (spinnersValid() && textFieldsValid()) {
 //                File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
-                findNavController().navigate(R.id.action_SecondFragment_to_HomeFragment)
+                findNavController().navigate(R.id.action_Second_to_EkranGlowny)
             }
         }
 

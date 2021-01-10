@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/SecondFragment">
+    app:startDestination="@id/EkranGlownyFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -12,25 +12,22 @@
         tools:layout="@layout/first_screen">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_First_to_Second"
             app:destination="@id/SecondFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.aplikacja.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/second_screen">
+        <action
+            android:id="@+id/action_Second_to_EkranGlowny"
+            app:destination="@id/EkranGlownyFragment" />
+    </fragment>
 
-        <action
-            android:id="@+id/action_SecondFragment_to_HomeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.aplikacja.HomeFragment"
-        android:label="HomeFragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        android:id="@+id/EkranGlownyFragment"
+        android:name="com.example.aplikacja.EkranGlownyFragment"
+        android:label="EkranGlownyFragment"></fragment>
 </navigation>

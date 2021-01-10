@@ -1,3 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="parent_card_margin">24dp</dimen>
+    <dimen name="card_content_margin_h">30dp</dimen>
+    <dimen name="card_content_margin_v">16dp</dimen>
 </resources>
