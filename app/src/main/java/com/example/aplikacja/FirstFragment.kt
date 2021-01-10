@@ -44,7 +44,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        nameInput = requireView().findViewById(R.id.nameInput);
+        nameInput = requireView().findViewById(R.id.nameInput)
         passwordInput = requireView().findViewById(R.id.passwordInput)
         repeatPasswordInput = requireView().findViewById(R.id.repeatPasswordInput)
         continueButton = requireView().findViewById(R.id.continueButton)

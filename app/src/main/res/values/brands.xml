@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brand_audi">Audi</string>
+    <string name="brand_mazda">Mazda</string>
+    <string name="brand_mercedes">Mercedes</string>
+    <string name="brand_toyota">Toyota</string>
+    <string name="brand_volvo">Volvo</string>
+
+    <string name="brand_bmw">BMW</string>
+    <string name="brand_harley">Harley-Davidson</string>
+    <string name="brand_honda">Honda</string>
+    <string name="brand_kawasaki">Kawasaki</string>
+    <string name="brand_suzuki">Suzuki</string>
+
+    <string name="brand_daf">DAF</string>
+    <string name="brand_man">MAN</string>
+    <string name="brand_scania">Scania</string>
+    <string name="brand_iveco">Iveco</string>
+    <string name="brand_volvoTruck">Volvo</string>
+</resources>

@@ -2,9 +2,8 @@
 <resources>
     <string-array name="vehicleTypesArray">
         <item>@string/common_selectType</item>
-        <item>@string/common_car</item>
-        <item>@string/common_motorcycle</item>
-        <item>@string/common_truck</item>
-        <item>@string/common_coach</item>
+        <item>@string/type_car</item>
+        <item>@string/type_motorcycle</item>
+        <item>@string/type_truck</item>
     </string-array>
 </resources>
