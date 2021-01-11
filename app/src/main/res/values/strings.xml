@@ -8,9 +8,24 @@
     <!-- Wspólne -->
     <string name="common_confirm">Potwierdź</string>
     <string name="common_add">Dodaj</string>
+    <string name="common_save">Zapisz</string>
     <string name="common_selectType">Wybierz rodzaj</string>
     <string name="common_selectBrand">Wybierz markę</string>
     <string name="common_selectModel">Wybierz model</string>
+    <string name="common_selectCar">Wybierz auto</string>
+    <string name="common_selectExpenceType">Wybierz koszt</string>
+    <string name="common_car">Samochód</string>
+    <string name="common_motorcycle">Motocykl</string>
+    <string name="common_truck">Ciężarówka</string>
+    <string name="common_coach">Autokar</string>
+    common_save
+
+    <!-- Errory -->
+    <string name="warning_passwordsAreNotIdentical">Podane hasła nie są identyczne.</string>
+    <string name="warning_nameTooShort">Podaj dłuższe imię.</string>
+    <string name="warning_nameIsRequired">Imię jest wymagane.</string>
+    <string name="warning_passwordTooShort">Hasło jest za krótkie.</string>
+    <string name="warning_passwordIsRequired">Hasło jest wymagane.</string>
 
     <!-- Pierwszy widok -->
     <string name="firstScreen_step1of2">Krok 1/2</string>
@@ -41,5 +56,20 @@
     <string name="menuDescription">Menu</string>
     <string name="logoDescription">Logo</string>
 
+    <!-- Dodaj pojazd -->
+    <string name="addcarScreen_addVehicleTitle">Dodaj swój pojazd</string>
+    <string name="addcarScreen_addLicensePlate">Wpisz rejestrację pojazdu</string>
+    <string name="addcarScreen_addMeterStatus">Wpisz stan licznika przebiegu</string>
+    <string name="addcarScreen_addPhoto">Dodaj zdjęcie</string>
+
+    <!-- Edytuj pojazd -->
+    <string name="editcarScreen_addVehicleTitle">Edytuj pojazd</string>
+    <string name="editcarScreen_addPhoto">Edytuj zdjęcie</string>
+
+    <!-- Dodaj koszt -->
+    <string name="addexpenceScreen_addExpence">Dodaj koszt</string>
+    <string name="addexpenceScreen_addAmount">Podaj ilość</string>
+    <string name="addexpenceScreen_addValue">Podaj cene</string>
+    <string name="addexpenceScreen_addAdditionalInformation">Informacje dodatkowe</string>
 
 </resources>

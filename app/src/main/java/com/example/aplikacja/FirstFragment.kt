@@ -1,5 +1,7 @@
 package com.example.aplikacja
 
+//import android.support.v7.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,11 +17,16 @@ import java.io.File
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
+
+    private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
+
     private var nameInput: EditText? = null;
     private var passwordInput: EditText? = null;
     private var repeatPasswordInput: EditText? = null;
     private var continueButton: Button? = null;
     private var warningItem: TextView? = null;
+
+    private var savedName2 = ""
 
     private val nameDataFile = "Name.txt"
     private val passwordDataFile = "Password.txt"
@@ -36,7 +43,7 @@ class FirstFragment : Fragment() {
         val fileExists2 = file2.exists()
 
         return if (fileExists and fileExists2){
-            inflater.inflate(R.layout.ekran_glowny, container, false)
+            inflater.inflate(R.layout.home_screen, container, false)
         } else {
             inflater.inflate(R.layout.first_screen, container, false)
         }
@@ -49,6 +56,14 @@ class FirstFragment : Fragment() {
         repeatPasswordInput = requireView().findViewById(R.id.repeatPasswordInput)
         continueButton = requireView().findViewById(R.id.continueButton)
         warningItem = requireView().findViewById(R.id.firstScreen_warning)
+
+        loadData()
+        var savedname3 = savedName2
+        if(savedname3 != ""){
+
+            findNavController().navigate(R.id.action_FirstFragment_to_homeFragment)
+            //findNavController().navigate(R.id.action_FirstFragment_to_editCarFragment)
+        }
 
         continueButton!!.setOnClickListener {
             if (
@@ -66,10 +81,36 @@ class FirstFragment : Fragment() {
                 ) &&
                 this.checkIfPasswordsAreIdentical()
             ) {
-//                saveDataToFiles();
-                findNavController().navigate(R.id.action_First_to_Second)
+                saveData()
+                //loadData()
+                //saveDataToFiles();
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             }
         }
+    }
+
+    private fun saveData(){
+        val insertedText = nameInput?.text.toString();
+
+        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val editor = shearedPreferences?.edit()
+        editor?.apply{
+            putString("NAME_KEY", insertedText)
+        }?.apply()
+
+    }
+
+    private fun loadData(){
+        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val savedName = shearedPreferences?.getString("NAME_KEY", null)
+
+
+        if (savedName != null) {
+            savedName2 = savedName
+        }
+        //pole.text = savedName
+        //setYourPasswordTitleText?.text = savedName
+        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show();
     }
 
     private fun saveDataToFiles() {
