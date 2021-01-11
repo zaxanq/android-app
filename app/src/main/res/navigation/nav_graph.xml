@@ -30,4 +30,13 @@
         android:id="@+id/EkranGlownyFragment"
         android:name="com.example.aplikacja.EkranGlownyFragment"
         android:label="EkranGlownyFragment"></fragment>
+
+    <fragment
+        android:id="@+id/editCarFragment"
+        android:name="com.example.aplikacja.EditCarFragment"
+        android:label="EditCarFragment" >
+        <action
+            android:id="@+id/action_editCarFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

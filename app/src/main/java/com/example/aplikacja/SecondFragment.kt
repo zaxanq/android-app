@@ -1,5 +1,7 @@
 package com.example.aplikacja
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import java.io.FileWriter
 
 
 /**
@@ -19,7 +22,27 @@ class SecondFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.second_screen, container, false)
+
+
+        loadData()
+
     }
+
+    private fun loadData(){
+        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val savedName = shearedPreferences?.getString("NAME_KEY", null)
+
+        //addFirstCarTitleText?.text = savedName
+        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun CreateFile(str:String){
+
+        var fo = FileWriter("test.txt")
+        fo.write("test")
+        fo.close()
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
