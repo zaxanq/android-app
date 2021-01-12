@@ -18,14 +18,6 @@
     <string name="common_motorcycle">Motocykl</string>
     <string name="common_truck">Ciężarówka</string>
     <string name="common_coach">Autokar</string>
-    common_save
-
-    <!-- Errory -->
-    <string name="warning_passwordsAreNotIdentical">Podane hasła nie są identyczne.</string>
-    <string name="warning_nameTooShort">Podaj dłuższe imię.</string>
-    <string name="warning_nameIsRequired">Imię jest wymagane.</string>
-    <string name="warning_passwordTooShort">Hasło jest za krótkie.</string>
-    <string name="warning_passwordIsRequired">Hasło jest wymagane.</string>
 
     <!-- Pierwszy widok -->
     <string name="firstScreen_step1of2">Krok 1/2</string>

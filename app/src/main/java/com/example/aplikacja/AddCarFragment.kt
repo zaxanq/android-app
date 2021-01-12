@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.io.File
 import java.io.FileWriter
-import java.lang.Exception
 
 
 /**
@@ -121,29 +122,8 @@ class AddCarFragment : Fragment() {
                 //File.createNewFile()
                 //File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
                 //File("$addLicensePlateInputText.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
-                findNavController().navigate(R.id.action_SecondFragment_to_HomeFragment)
+                findNavController().navigate(R.id.action_Second_to_EkranGlowny)
             }
         }
-
-
-
-        fun loadSpinnerResources(spinner: Spinner, resources: Int) {
-            // load brands list
-            // get array of brands from resource (vehicleBrands.xml)
-            ArrayAdapter.createFromResource(
-                    requireActivity(), // ?
-                    resources, // source
-                    android.R.layout.simple_spinner_item // map items to simple_spinner_item
-            ).also { adapter -> // then
-                // load simple_spinner_items as items of dropdown
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spinner.adapter = adapter // then load whole "adapter" into brand spinner
-            }
-        }
-
-        loadSpinnerResources(view.findViewById(R.id.selectTypeSpinner), R.array.vehicleTypesArray)
-        loadSpinnerResources(view.findViewById(R.id.selectBrandSpinner), R.array.vehicleBrandsArray)
-        loadSpinnerResources(view.findViewById(R.id.selectModelSpinner), R.array.vehicleModelsArray)
-
     }
 }

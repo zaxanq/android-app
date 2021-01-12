@@ -61,7 +61,7 @@ class FirstFragment : Fragment() {
         var savedname3 = savedName2
         if(savedname3 != ""){
 
-            findNavController().navigate(R.id.action_FirstFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_First_to_EkranGlowny)
             //findNavController().navigate(R.id.action_FirstFragment_to_editCarFragment)
         }
 
@@ -84,7 +84,7 @@ class FirstFragment : Fragment() {
                 saveData()
                 //loadData()
                 //saveDataToFiles();
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                findNavController().navigate(R.id.action_First_to_Second)
             }
         }
     }
