@@ -8,13 +8,30 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import java.io.File
 import java.io.FileWriter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import java.io.*
+import java.lang.System.out
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardOpenOption
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
+
+    private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
+    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+    private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
+    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+    //private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -32,7 +49,7 @@ class SecondFragment : Fragment() {
         //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show()
     }
 
-    private fun CreateFile(str:String){
+    private fun CreateFile(str: String){
 
         var fo = FileWriter("test.txt")
         fo.write("test")
@@ -44,9 +61,34 @@ class SecondFragment : Fragment() {
 
         view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
             if (spinnersValid() && textFieldsValid()) {
-//                File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
-                findNavController().navigate(R.id.action_Second_to_EkranGlowny)
+
+                val addMeterStatusInput = view.findViewById<EditText>(R.id.addMeterStatusInput)
+                val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
+                val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+                val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
+                val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+
+                //Indywidualny TXT
+                val fileName = "${addLicensePlateInput.text}.txt"
+                var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}&"
+
+                //ogólny TXT
+                 val fileNameGeneral = "Vehicles.txt"
+                 var filebodyGeneral = "${addLicensePlateInput.text}&"
+
+                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
+                    output?.write(filebody.toByteArray())
+
+                    output?.close()
+
+                    context?.openFileOutput(fileNameGeneral, Context.MODE_PRIVATE).use { output ->
+                        output?.write(filebodyGeneral.toByteArray() )
+                        output?.close()
+                    }
+                }
             }
+
+            findNavController().navigate(R.id.action_Second_to_EkranGlowny)
         }
 
         // ładuj tylko spinner Rodzaju
