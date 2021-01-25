@@ -1,6 +1,5 @@
 package com.example.aplikacja
 
-//import android.support.v7.app.AppCompatActivity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,7 +17,7 @@ import java.io.File
  */
 class FirstFragment : Fragment() {
 
-    private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
+    //private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
 
     private var nameInput: EditText? = null;
     private var passwordInput: EditText? = null;
@@ -62,7 +61,6 @@ class FirstFragment : Fragment() {
         if(savedname3 != ""){
 
             findNavController().navigate(R.id.action_First_to_EkranGlowny)
-            //findNavController().navigate(R.id.action_FirstFragment_to_editCarFragment)
         }
 
         continueButton!!.setOnClickListener {
@@ -82,8 +80,6 @@ class FirstFragment : Fragment() {
                 this.checkIfPasswordsAreIdentical()
             ) {
                 saveData()
-                //loadData()
-                //saveDataToFiles();
                 findNavController().navigate(R.id.action_First_to_Second)
             }
         }
@@ -108,9 +104,6 @@ class FirstFragment : Fragment() {
         if (savedName != null) {
             savedName2 = savedName
         }
-        //pole.text = savedName
-        //setYourPasswordTitleText?.text = savedName
-        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show();
     }
 
     private fun saveDataToFiles() {

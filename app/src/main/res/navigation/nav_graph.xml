@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/EkranGlownyFragment">
+    app:startDestination="@id/SecondFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -32,7 +32,14 @@
     <fragment
         android:id="@+id/EkranGlownyFragment"
         android:name="com.example.aplikacja.EkranGlownyFragment"
-        android:label="EkranGlownyFragment" />
+        android:label="EkranGlownyFragment" >
+        <action
+            android:id="@+id/action_EkranGlownyFragment_to_addCarFragment"
+            app:destination="@id/addCarFragment" />
+        <action
+            android:id="@+id/action_EkranGlownyFragment_to_editCarFragment"
+            app:destination="@id/editCarFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/editCarFragment"
@@ -40,6 +47,14 @@
         android:label="EditCarFragment" >
         <action
             android:id="@+id/action_editCarFragment_to_EkranGlowny"
+            app:destination="@id/EkranGlownyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCarFragment"
+        android:name="com.example.aplikacja.AddCarFragment"
+        android:label="AddCarFragment" >
+        <action
+            android:id="@+id/action_addCarFragment_to_EkranGlownyFragment"
             app:destination="@id/EkranGlownyFragment" />
     </fragment>
 </navigation>

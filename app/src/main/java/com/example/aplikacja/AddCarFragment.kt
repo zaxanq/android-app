@@ -3,21 +3,17 @@ package com.example.aplikacja
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import java.io.File
 import java.io.FileWriter
 
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class AddCarFragment : Fragment() {
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
     private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
@@ -40,19 +36,69 @@ class AddCarFragment : Fragment() {
 
     }
 
-    private fun loadData(){
+    private fun loadData() {
         val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
         val savedName = shearedPreferences?.getString("NAME_KEY", null)
-
-        //addFirstCarTitleText?.text = savedName
-        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show()
     }
 
-    private fun CreateFile(str:String){
 
-        var fo = FileWriter("test.txt")
-        fo.write("test")
-        fo.close()
+    //fun File(args: Array<String>) {
+    fun File() {
+
+
+        val fileNameVehicle = "Vehicles.txt"
+
+        context?.openFileInput(fileNameVehicle).use { stream ->
+            val Vehicle = stream?.bufferedReader().use {
+                it?.readText()
+            }
+            Log.d("TAG", "LOADED: $Vehicle")
+
+            val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+            val CarTag = "{$addLicensePlateInput.text}"
+
+
+            val fileNameCarTag = "{$CarTag}.txt"
+            var file = File(fileNameCarTag)
+            var fileExists = file.exists()
+
+            val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
+            val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+            val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
+            val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+
+            if (fileExists) {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Error")
+                builder.setMessage("Pojazd o tej rejestracji już istnieje!")
+                builder.setIcon(R.drawable.ic_launcher_background)
+
+                builder.setPositiveButton("OK") { dialog, which ->
+                    dialog.dismiss()
+                }
+
+
+            } else {
+                //Indywidualny TXT
+                val fileName = "{$addLicensePlateInput}.txt"
+                var filebody = "${selectTypeSpinner?.selectedItem};${selectBrandSpinner?.selectedItem};${selectModelSpinner?.selectedItem};${addLicensePlateInput?.text};${addMeterStatusInput?.text}&"
+                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
+                    output?.write(filebody.toByteArray())
+
+                    output?.close()
+
+
+                    //ogólny TXT
+                    val fileNameGeneral = "Vehicles.txt"
+                    var filebodyGeneral = "{$Vehicle}&${addLicensePlateInput?.text}&"
+                    context?.openFileOutput(fileNameGeneral, Context.MODE_PRIVATE).use { output ->
+                        output?.write(filebodyGeneral.toByteArray())
+
+                        output?.close()
+                    }
+                }
+            }
+        }
     }
 
 
@@ -67,6 +113,9 @@ class AddCarFragment : Fragment() {
 
         loadData()
 
+
+
+
         view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
             if (selectTypeSpinnerText.trim().length <= 0) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
@@ -77,10 +126,7 @@ class AddCarFragment : Fragment() {
                 builder.setPositiveButton("OK") { dialog, which ->
                     dialog.dismiss()
                 }
-            }
-
-
-            else if(selectBrandSpinnerText.trim().length<=1) {
+            } else if (selectBrandSpinnerText.trim().length <= 1) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
                 builder.setTitle("Error")
                 builder.setMessage("Wybierz markę pojazdu!")
@@ -89,9 +135,7 @@ class AddCarFragment : Fragment() {
                 builder.setPositiveButton("OK") { dialog, which ->
                     dialog.dismiss()
                 }
-            }
-
-            else if(selectModelSpinnerText.trim().length<=1) {
+            } else if (selectModelSpinnerText.trim().length <= 1) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
                 builder.setTitle("Error")
                 builder.setMessage("Wybierz model pojazdu!")
@@ -100,30 +144,10 @@ class AddCarFragment : Fragment() {
                 builder.setPositiveButton("OK") { dialog, which ->
                     dialog.dismiss()
                 }
-            }
-            else{
-                CreateFile(addLicensePlateInputText)
-                /*( val fileName = "data.txt"
-
-                 var file = File(fileName)
-
-                 // create a new file
-                 file.writeText("test")*/
-
-
-                //val fileName = "myfile.txt"
-                //val myfile = File(fileName)
-
-                //myfile.printWriter().use { out ->
-
-                //    out.println("First line")
-                //    out.println("Second line")
-                //}
-                //File.createNewFile()
-                //File("Cars.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
-                //File("$addLicensePlateInputText.txt").writeText(selectTypeSpinnerText + ';' + selectBrandSpinnerText + ';' + selectModelSpinnerText + ';' + addLicensePlateInputText + ';' + addMeterStatusInputText)
-                findNavController().navigate(R.id.action_Second_to_EkranGlowny)
+            } else {
+                    File()
+                    findNavController().navigate(R.id.action_addCarFragment_to_EkranGlownyFragment)
+                }
             }
         }
     }
-}
