@@ -11,15 +11,14 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import java.io.File
-import java.io.FileWriter
 
 
 class AddCarFragment : Fragment() {
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
     private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
-    private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
+    private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
     private val warningText = view?.findViewById<TextView>(R.id.secondScreen_warning)
     private val addFirstCarTitleText = view?.findViewById<TextView>(R.id.addFirstCarTitle)
 
@@ -31,9 +30,7 @@ class AddCarFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.addcar_screen, container, false)
 
-
         loadData()
-
     }
 
     private fun loadData() {
@@ -41,10 +38,8 @@ class AddCarFragment : Fragment() {
         val savedName = shearedPreferences?.getString("NAME_KEY", null)
     }
 
-
     //fun File(args: Array<String>) {
     fun File() {
-
 
         val fileNameVehicle = "Vehicles.txt"
 
@@ -54,7 +49,7 @@ class AddCarFragment : Fragment() {
             }
             Log.d("TAG", "LOADED: $Vehicle")
 
-            val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+            val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
             val CarTag = "{$addLicensePlateInput.text}"
 
 
@@ -63,9 +58,9 @@ class AddCarFragment : Fragment() {
             var fileExists = file.exists()
 
             val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-            val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+            val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
             val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-            val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+            val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
 
             if (fileExists) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)

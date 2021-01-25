@@ -47,7 +47,7 @@
         tools:listitem="@android:layout/select_dialog_item" />
 
     <Spinner
-        android:id="@+id/selectBrandSpinner"
+        android:id="@+id/selectExpenceType"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -71,11 +71,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBrandSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/selectExpenceType"
         tools:listitem="@android:layout/select_dialog_item" />
 
     <EditText
-        android:id="@+id/addLicensePlateInput"
+        android:id="@+id/addPriceInput"
         android:layout_width="310dp"
         android:layout_height="49dp"
         android:layout_marginTop="16dp"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selectModelSpinner" />
 
     <EditText
-        android:id="@+id/addMeterStatusInput"
+        android:id="@+id/addAmountInput"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -102,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addLicensePlateInput" />
+        app:layout_constraintTop_toBottomOf="@+id/addPriceInput" />
 
     <Button
         android:id="@+id/addPhotoButton"
@@ -117,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeterStatusInput"
+        app:layout_constraintTop_toBottomOf="@+id/addAmountInput"
         app:rippleColor="@color/white" />
 
     <Button

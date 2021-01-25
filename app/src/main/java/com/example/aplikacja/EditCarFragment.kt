@@ -12,8 +12,6 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.io.File
-import java.io.FileWriter
 
 
 /**
@@ -21,10 +19,10 @@ import java.io.FileWriter
  */
 class EditCarFragment : Fragment() {
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
     private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
-    private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
+    private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
     private val warningText = view?.findViewById<TextView>(R.id.secondScreen_warning)
     private val addFirstCarTitleText = view?.findViewById<TextView>(R.id.addFirstCarTitle)
 
@@ -36,28 +34,14 @@ class EditCarFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.editcar_screen, container, false)
 
-
         loadData()
-
     }
-
 
     private fun loadData() {
         val shearedPreferences =
                 requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
         val savedName = shearedPreferences?.getString("NAME_KEY", null)
-
-        //addFirstCarTitleText?.text = savedName
-        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show()
     }
-
-    private fun CreateFile(str: String) {
-
-        var fo = FileWriter("test.txt")
-        fo.write("test")
-        fo.close()
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,11 +52,7 @@ class EditCarFragment : Fragment() {
         val addLicensePlateInputText: String = addLicensePlateInput?.text.toString().trim()
         val addMeterStatusInputText: String = addMeterStatusInput?.text.toString().trim()
 
-        //Pobranie numeru rejestracyjnego
-        val CarTag = ""
-
-
-        val fileNameVehicle = "{$CarTag}.txt"
+        val fileNameVehicle = "Vehicle.txt"
 
         context?.openFileInput(fileNameVehicle).use { stream ->
             val Vehicle = stream?.bufferedReader().use {
@@ -80,6 +60,7 @@ class EditCarFragment : Fragment() {
             }
 
             //TODO Wczytanie danych z pliku do spinnerów
+
 
             loadData()
 
@@ -114,16 +95,15 @@ class EditCarFragment : Fragment() {
                 } else {
 
                     val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-                    val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+                    val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
                     val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-                    val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
-                    val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+                    val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
+                    val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
 
                     var filebody = "${selectTypeSpinner?.selectedItem};${selectBrandSpinner?.selectedItem};${selectModelSpinner?.selectedItem};${addLicensePlateInput?.text};${addMeterStatusInput?.text}&"
 
                     context?.openFileOutput(fileNameVehicle, Context.MODE_PRIVATE).use { output ->
                         output?.write(filebody.toByteArray())
-
 
                         findNavController().navigate(R.id.action_Second_to_EkranGlowny)
                     }

@@ -24,7 +24,6 @@ class EkranGlownyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.ekran_glowny, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +37,6 @@ class EkranGlownyFragment : Fragment() {
             }
             Log.d("TAG", "LOADED: $Vehicle")
 
-            //testtext.setText(text);
             Toast.makeText(requireContext(), Vehicle, Toast.LENGTH_SHORT).show();
         }
 

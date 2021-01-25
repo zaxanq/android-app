@@ -8,16 +8,9 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.io.File
-import java.io.FileWriter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import java.io.*
-import java.lang.System.out
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.nio.file.StandardOpenOption
 
 
 /**
@@ -26,10 +19,10 @@ import java.nio.file.StandardOpenOption
 class SecondFragment : Fragment() {
 
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+    private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
     private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
-    //private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addMeterStatusInput)
+    private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
+    private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
 
 
     override fun onCreateView(
@@ -39,62 +32,34 @@ class SecondFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.second_screen, container, false)
 
-
         loadData()
-
     }
 
     private fun loadData(){
         val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
         val savedName = shearedPreferences?.getString("NAME_KEY", null)
-
-        //addFirstCarTitleText?.text = savedName
-        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show()
     }
-
-    private fun CreateFile(str: String){
-
-        var fo = FileWriter("test.txt")
-        fo.write("test")
-        fo.close()
-    }
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
             if (spinnersValid() && textFieldsValid()) {
 
-                val addMeterStatusInput = view.findViewById<EditText>(R.id.addMeterStatusInput)
+                val addMeterStatusInput = view.findViewById<EditText>(R.id.addAmountInput)
                 val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-                val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+                val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
                 val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-                val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+                val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
 
                 //Indywidualny TXT
-                val fileName = "${addLicensePlateInput.text}.txt"
+                val fileName = "Vehicles.txt"
                 var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}&"
-
-                //ogólny TXT
-                 val fileNameGeneral = "Vehicles.txt"
-                 var filebodyGeneral = "${addLicensePlateInput.text}&"
 
                 context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
                     output?.write(filebody.toByteArray())
 
                      output?.close()
-
-                    context?.openFileOutput(fileNameGeneral, Context.MODE_PRIVATE).use { output ->
-                                output?.write(filebodyGeneral.toByteArray() )
-
-                                output?.close()
-
-                }
                 }
             }
 
@@ -102,8 +67,6 @@ class SecondFragment : Fragment() {
 
             findNavController().navigate(R.id.action_Second_to_EkranGlowny)
         }
-    //}
-
         // ładuj tylko spinner Rodzaju
         loadTypeSpinner(requireView().findViewById(R.id.selectTypeSpinner), R.array.vehicleTypesArray)
     }
@@ -121,12 +84,10 @@ class SecondFragment : Fragment() {
                 // nadpisz metodę onItemSelected
                 override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
                     // po wybraniu opcji załaduj spinner Marki
-                    loadBrandSpinner(requireView().findViewById(R.id.selectBrandSpinner))
+                    loadBrandSpinner(requireView().findViewById(R.id.selectExpenceType))
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {}
-
-
             }
         }
     }
@@ -166,7 +127,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun loadModelSpinner(spinner: Spinner, clear: Boolean = false) {
-        val brand = requireView().findViewById<Spinner>(R.id.selectBrandSpinner).selectedItem
+        val brand = requireView().findViewById<Spinner>(R.id.selectExpenceType).selectedItem
         var data: Int
         if (!clear) { // jeżeli to nie jest czyszczenie spinnera, wybierz listę modeli
             data = when {
@@ -208,7 +169,7 @@ class SecondFragment : Fragment() {
     private fun spinnersValid(): Boolean {
         // sprawdza czy spinnery mają podane wartości i ewentualnie pokazuje error
         return spinnerOptionValid(requireView().findViewById(R.id.selectTypeSpinner))
-                && spinnerOptionValid(requireView().findViewById(R.id.selectBrandSpinner))
+                && spinnerOptionValid(requireView().findViewById(R.id.selectExpenceType))
                 && spinnerOptionValid(requireView().findViewById(R.id.selectModelSpinner));
     }
 
@@ -226,8 +187,8 @@ class SecondFragment : Fragment() {
     private fun textFieldsValid(): Boolean {
         // sprawdza czy pola są uzupełnione i czy stan licznika to liczba
         val warningText = requireView().findViewById<TextView>(R.id.secondScreen_warning)
-        val addLicensePlateInputNotEmpty = requireView().findViewById<EditText>(R.id.addLicensePlateInput).text.toString().isNotEmpty()
-        val addMeterStatusInputText = requireView().findViewById<EditText>(R.id.addMeterStatusInput).text.toString()
+        val addLicensePlateInputNotEmpty = requireView().findViewById<EditText>(R.id.addPriceInput).text.toString().isNotEmpty()
+        val addMeterStatusInputText = requireView().findViewById<EditText>(R.id.addAmountInput).text.toString()
         val addMeterStatusInputNotEmpty = addMeterStatusInputText.isNotEmpty()
 
         return if (!addLicensePlateInputNotEmpty) { // jezeli rejestracja pusta
