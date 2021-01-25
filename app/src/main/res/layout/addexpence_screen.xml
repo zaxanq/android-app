@@ -9,7 +9,7 @@
     android:background="@color/main">
 
     <EditText
-        android:id="@+id/addMeterStatusInput2"
+        android:id="@+id/addAdditionalInfo"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeterStatusInput" />
+        app:layout_constraintTop_toBottomOf="@+id/addAmountInput" />
 
     <ImageView
         android:id="@+id/appLogo"
@@ -46,23 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appLogo" />
 
     <Spinner
-        android:id="@+id/selectTypeSpinner"
-        android:layout_width="310dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="#642CFD"
-        android:backgroundTint="@color/white"
-        android:contextClickable="true"
-        android:foregroundTint="#00000000"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addFirstCarTitle"
-        tools:listitem="@android:layout/select_dialog_item" />
-
-    <Spinner
-        android:id="@+id/selectBrandSpinner"
+        android:id="@+id/selectExpenceType"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -72,11 +56,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectTypeSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/addFirstCarTitle"
         tools:listitem="@android:layout/select_dialog_item" />
 
     <EditText
-        android:id="@+id/addLicensePlateInput"
+        android:id="@+id/addPriceInput"
         android:layout_width="310dp"
         android:layout_height="49dp"
         android:layout_marginTop="8dp"
@@ -88,10 +72,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBrandSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/selectExpenceType" />
 
     <EditText
-        android:id="@+id/addMeterStatusInput"
+        android:id="@+id/addAmountInput"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -103,23 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addLicensePlateInput" />
-
-    <Button
-        android:id="@+id/addPhotoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:width="310dp"
-        android:height="100dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/addcarScreen_addPhoto"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeterStatusInput2"
-        app:rippleColor="@color/white" />
+        app:layout_constraintTop_toBottomOf="@+id/addPriceInput" />
 
     <Button
         android:id="@+id/addCarButton"
@@ -146,9 +114,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPhotoButton"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
