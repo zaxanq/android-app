@@ -8,16 +8,9 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.io.File
-import java.io.FileWriter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import java.io.*
-import java.lang.System.out
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.nio.file.StandardOpenOption
 
 
 /**
@@ -44,16 +37,6 @@ class SecondFragment : Fragment() {
     private fun loadData(){
         val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedName = sharedPreferences?.getString("NAME_KEY", null)
-
-        //addFirstCarTitleText?.text = savedName
-        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun CreateFile(str: String){
-
-        var fo = FileWriter("test.txt")
-        fo.write("test")
-        fo.close()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,6 +62,7 @@ class SecondFragment : Fragment() {
                 context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
                     output?.write(filebody.toByteArray())
 
+//                    output?.close()
                     output?.close()
 
                     context?.openFileOutput(fileNameGeneral, Context.MODE_PRIVATE).use { output ->
@@ -181,9 +165,9 @@ class SecondFragment : Fragment() {
         }
 
         ArrayAdapter.createFromResource(
-            requireActivity(),
-            data,
-            android.R.layout.simple_spinner_item
+                requireActivity(),
+                data,
+                android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
