@@ -1,6 +1,5 @@
 package com.example.aplikacja
 
-//import android.support.v7.app.AppCompatActivity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import java.io.File
@@ -19,7 +17,7 @@ import java.io.File
  */
 class FirstFragment : Fragment() {
 
-    private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
+    //private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
 
     private var nameInput: EditText? = null;
     private var passwordInput: EditText? = null;
@@ -91,10 +89,6 @@ class FirstFragment : Fragment() {
     private fun loadData() {
         val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         savedName = sharedPreferences.getString("NAME_KEY", null).toString()
-
-        //pole.text = savedName
-        //setYourPasswordTitleText?.text = savedName
-        Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show();
     }
 
     private fun saveDataToFiles() {
