@@ -1,6 +1,5 @@
 package com.example.aplikacja
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,12 +19,9 @@ class SecondFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.second_screen, container, false)
 
-
         loadData()
-
     }
 
     private fun loadData(){
@@ -42,7 +38,6 @@ class SecondFragment : Fragment() {
         fo.write("test")
         fo.close()
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

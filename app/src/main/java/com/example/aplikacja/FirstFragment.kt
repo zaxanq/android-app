@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import java.io.File
@@ -17,13 +18,16 @@ import java.io.File
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
+
+    private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
+
     private var nameInput: EditText? = null;
     private var passwordInput: EditText? = null;
     private var repeatPasswordInput: EditText? = null;
     private var continueButton: Button? = null;
     private var warningItem: TextView? = null;
 
-    private var savedName2 = ""
+    private lateinit var savedName: String;
 
     private val nameDataFile = "Name.txt"
     private val passwordDataFile = "Password.txt"
@@ -32,18 +36,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // TODO: Ticket #8 - dokończyć
-        val file = File(nameDataFile)
-        val file2 = File(passwordDataFile)
-
-        val fileExists = file.exists()
-        val fileExists2 = file2.exists()
-
-        return if (fileExists and fileExists2){
-            inflater.inflate(R.layout.home_screen, container, false)
-        } else {
-            inflater.inflate(R.layout.first_screen, container, false)
-        }
+        return inflater.inflate(R.layout.first_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,12 +47,11 @@ class FirstFragment : Fragment() {
         continueButton = requireView().findViewById(R.id.continueButton)
         warningItem = requireView().findViewById(R.id.firstScreen_warning)
 
+        // POBIERZ DANE Z PREFERENCES
         loadData()
-        var savedname3 = savedName2
-        if(savedname3 != ""){
-
+        // JEŻELI ISTNIEJE IMIE, PRZEJDŹ DO EKRANU GŁÓWNEGO
+        if (savedName != "") {
             findNavController().navigate(R.id.action_First_to_EkranGlowny)
-            //findNavController().navigate(R.id.action_FirstFragment_to_editCarFragment)
         }
 
         continueButton!!.setOnClickListener {
@@ -79,33 +71,30 @@ class FirstFragment : Fragment() {
                 this.checkIfPasswordsAreIdentical()
             ) {
                 saveData()
-                //loadData()
                 findNavController().navigate(R.id.action_First_to_Second)
             }
         }
     }
 
-    private fun saveData(){
+    private fun saveData() {
         val insertedText = nameInput?.text.toString();
 
-        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences?.edit()
-        editor?.apply{
+        editor?.apply {
             putString("NAME_KEY", insertedText)
         }?.apply()
 
     }
 
-    private fun loadData(){
+    private fun loadData() {
         val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedName = sharedPreferences.getString("NAME_KEY", null)
+        savedName = sharedPreferences.getString("NAME_KEY", null).toString()
 
-        if (savedName != null) {
-            savedName2 = savedName
-        }
         //pole.text = savedName
         //setYourPasswordTitleText?.text = savedName
-        //Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), savedName, Toast.LENGTH_SHORT).show();
     }
 
     private fun saveDataToFiles() {

@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/EkranGlownyFragment">
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/FirstFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/EkranGlownyFragment"
         android:name="com.example.aplikacja.EkranGlownyFragment"
-        android:label="EkranGlownyFragment" />
+        android:label="Ekran główny" />
 
     <fragment
         android:id="@+id/editCarFragment"

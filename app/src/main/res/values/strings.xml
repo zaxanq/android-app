@@ -2,8 +2,8 @@
     <string name="app_name">Aplikacja</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label">Utwórz konto — krok 1/2</string>
+    <string name="second_fragment_label">Utwórz konto — krok 2/2</string>
 
     <!-- Wspólne -->
     <string name="common_confirm">Potwierdź</string>
@@ -20,7 +20,6 @@
     <string name="common_coach">Autokar</string>
 
     <!-- Pierwszy widok -->
-    <string name="firstScreen_step1of2">Krok 1/2</string>
     <string name="firstScreen_whatsYourName">Cześć! Jak się nazywasz?</string>
     <string name="firstScreen_namePlaceholder">Podaj swoje imię...</string>
     <string name="firstScreen_setYourPassword">Ustaw swoje hasło</string>
@@ -28,7 +27,6 @@
     <string name="firstScreen_repeatPasswordPlaceholder">Potwierdź hasło...</string>
 
     <!-- Drugi widok -->
-    <string name="secondScreen_step2of2">Krok 2/2</string>
     <string name="secondScreen_addFirstVehicleTitle">Uzupełnij pierwszy pojazd</string>
     <string name="secondScreen_addLicensePlate">Wpisz rejestrację pojazdu</string>
     <string name="secondScreen_addMeterStatus">Wpisz stan licznika przebiegu</string>
