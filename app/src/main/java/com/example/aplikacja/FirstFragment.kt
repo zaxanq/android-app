@@ -17,9 +17,6 @@ import java.io.File
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
-    private val setYourPasswordTitleText = view?.findViewById<TextView>(R.id.setYourPasswordTitle)
-
     private var nameInput: EditText? = null;
     private var passwordInput: EditText? = null;
     private var repeatPasswordInput: EditText? = null;
@@ -83,7 +80,6 @@ class FirstFragment : Fragment() {
             ) {
                 saveData()
                 //loadData()
-                //saveDataToFiles();
                 findNavController().navigate(R.id.action_First_to_Second)
             }
         }
@@ -92,8 +88,8 @@ class FirstFragment : Fragment() {
     private fun saveData(){
         val insertedText = nameInput?.text.toString();
 
-        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
-        val editor = shearedPreferences?.edit()
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences?.edit()
         editor?.apply{
             putString("NAME_KEY", insertedText)
         }?.apply()
@@ -101,9 +97,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun loadData(){
-        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
-        val savedName = shearedPreferences?.getString("NAME_KEY", null)
-
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val savedName = sharedPreferences.getString("NAME_KEY", null)
 
         if (savedName != null) {
             savedName2 = savedName

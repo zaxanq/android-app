@@ -13,8 +13,5 @@ class MainActivity : AppCompatActivity() {
 
         val listView = findViewById<ListView>(R.id.Car_List)
         val redColor = Color.parseColor("#FF0000")
-        listView?.setBackgroundColor(redColor)
-
-
     }
 }

@@ -35,8 +35,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadData(){
-        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
-        val savedName = shearedPreferences?.getString("NAME_KEY", null)
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val savedName = sharedPreferences?.getString("NAME_KEY", null)
 
 
         //textViewNameText?.text = "savedName"
