@@ -8,42 +8,6 @@
     tools:context=".EkranGlownyFragment"
     android:background="@color/mainBackground">
 
-    <Toolbar
-        android:id="@+id/mainToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/menuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:background="@color/main"
-        android:minWidth="40dp"
-        android:minHeight="40dp"
-        android:src="@drawable/menu"
-        app:layout_constraintBottom_toBottomOf="@+id/mainToolbar"
-        app:layout_constraintLeft_toLeftOf="@+id/mainToolbar"
-        app:layout_constraintTop_toTopOf="@+id/mainToolbar"
-        android:contentDescription="@string/menuDescription" />
-
-    <Toolbar
-        android:id="@+id/carSelectToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainToolbar" />
-
     <TextView
         android:id="@+id/mainScreenTitle"
         android:layout_width="match_parent"
@@ -55,11 +19,11 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/carSelectToolbar"  />
+        app:layout_constraintTop_toTopOf="parent"  />
 
     <!-- TANKOWANIE -->
     <androidx.cardview.widget.CardView
-        android:id="@id/refuelingCard"
+        android:id="@+id/refuelingCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -270,7 +234,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@id/nextMonthCard"
+        android:id="@+id/nextMonthCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
