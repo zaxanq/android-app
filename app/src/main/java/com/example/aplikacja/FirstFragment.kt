@@ -49,8 +49,8 @@ class FirstFragment : Fragment() {
 
         // POBIERZ DANE Z PREFERENCES
         loadData()
-        if(savedName != ""){
-            Snackbar.make(view, savedName, Snackbar.LENGTH_LONG)
+        if(savedName != "null" && savedName != ""){
+            Snackbar.make(view, "'" + savedName + "'", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
             findNavController().navigate(R.id.action_First_to_EkranGlowny)
         }

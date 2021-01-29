@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 
 class AddExpenceFragment : Fragment() {
-    private val selectExpenceType = view?.findViewById<Spinner>(R.id.selectExpenceType)
+//    private val selectExpenceType = view?.findViewById<Spinner>(R.id.selectExpenceType)
     private val addPriceInput = view?.findViewById<EditText>(R.id.addPriceInput)
     private val addAmountInput = view?.findViewById<EditText>(R.id.addAmountInput)
     private val addAdditionalInfo = view?.findViewById<EditText>(R.id.addAdditionalInfo)
@@ -34,7 +33,7 @@ class AddExpenceFragment : Fragment() {
     }
 
     private fun loadData() {
-        val sharedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedName = sharedPreferences?.getString("NAME_KEY", null)
     }
 
