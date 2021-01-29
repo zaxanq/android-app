@@ -33,12 +33,15 @@
         android:id="@+id/EkranGlownyFragment"
         android:name="com.example.aplikacja.EkranGlownyFragment"
         android:label="Ekran główny" >
-        <action
-            android:id="@+id/action_EkranGlownyFragment_to_addCarFragment"
-            app:destination="@id/addCarFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_EkranGlownyFragment_to_addCarFragment"-->
+<!--            app:destination="@id/addCarFragment" />-->
         <action
             android:id="@+id/action_EkranGlownyFragment_to_editCarFragment"
             app:destination="@id/editCarFragment" />
+        <action
+            android:id="@+id/action_EkranGlownyFragment_to_addExpenceFragment"
+            app:destination="@id/addExpenceFragment" />
     </fragment>
 
     <fragment
@@ -53,9 +56,13 @@
     <fragment
         android:id="@+id/addCarFragment"
         android:name="com.example.aplikacja.AddCarFragment"
-        android:label="Dodaj pojazd">
+        android:label="Dodaj pojazd" />
+    <fragment
+        android:id="@+id/addExpenceFragment"
+        android:name="com.example.aplikacja.AddExpenceFragment"
+        android:label="AddExpenceFragment" >
         <action
-            android:id="@+id/action_addCarFragment_to_EkranGlownyFragment"
+            android:id="@+id/action_addExpenceFragment_to_EkranGlownyFragment"
             app:destination="@id/EkranGlownyFragment" />
     </fragment>
 </navigation>

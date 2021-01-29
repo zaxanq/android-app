@@ -13,9 +13,6 @@ import androidx.navigation.fragment.findNavController
 import java.io.File
 
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class AddCarFragment : Fragment() {
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
     private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
@@ -140,9 +137,9 @@ class AddCarFragment : Fragment() {
                     dialog.dismiss()
                 }
             } else {
-                File()
-                findNavController().navigate(R.id.action_addCarFragment_to_EkranGlownyFragment)
+                    File()
+                   // findNavController().navigate(R.id.action_addCarFragment_to_EkranGlownyFragment)
+                }
             }
         }
     }
-}
