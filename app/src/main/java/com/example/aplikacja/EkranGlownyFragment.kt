@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import java.util.UUID
 
 
 /**
@@ -22,6 +24,10 @@ class EkranGlownyFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.ekran_glowny, container, false)
     }
+
+    private lateinit var listAdapter: CardViewListAdapter
+    private val recyclerView: RecyclerView
+        get() = requireView().findViewById(R.id.recyclerView)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,5 +84,18 @@ class EkranGlownyFragment : Fragment() {
             }
 
         }
+
+        listAdapter = CardViewListAdapter()
+
+        recyclerView.adapter = listAdapter
+
+        listAdapter.submitList(List(10) {
+            CardViewItem(UUID.randomUUID(), "No. $it")
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        recyclerView.adapter = null
     }
 }
