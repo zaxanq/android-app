@@ -29,7 +29,7 @@ class EkranGlownyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fileNameVehicle = "Vehicles.txt"
+                 val fileNameVehicle = "Vehicles.txt"
 
         context?.openFileInput(fileNameVehicle).use { stream ->
             val Vehicle = stream?.bufferedReader().use {
@@ -37,13 +37,55 @@ class EkranGlownyFragment : Fragment() {
             }
             Log.d("TAG", "LOADED: $Vehicle")
 
-            Toast.makeText(requireContext(), Vehicle, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(requireContext(), "$Vehicle", Toast.LENGTH_SHORT).show();
+        }
+
+        val fileNameLoad = "Vehicles.txt"
+
+        context?.openFileInput(fileNameLoad).use { stream ->
+            val Expence = stream?.bufferedReader().use {
+                it?.readText()
+            }
+            Log.d("TAG", "LOADED: $Expence")
+
+            //Toast.makeText(requireContext(), "$Expence", Toast.LENGTH_SHORT).show();
+
+            val values = "$Expence" // Read List from somewhere
+            val lstValues: List<String> = values.split(";").map { it -> it.trim() }
+            lstValues.forEach { it ->
+                Log.i("Values", "value=$it")
+                Toast.makeText(requireContext(), "value=$it", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+
+        //=========================
+
+        val fileNameExpence = "Expence.txt"
+
+        context?.openFileInput(fileNameExpence).use { stream ->
+            val Expence = stream?.bufferedReader().use {
+                it?.readText()
+            }
+            Log.d("TAG", "LOADED: $Expence")
+
+            //Toast.makeText(requireContext(), "$Expence", Toast.LENGTH_SHORT).show();
+
+            val values = "$Expence" // Read List from somewhere
+            val lstValues: List<String> = values.split(";").map { it -> it.trim() }
+            lstValues.forEach { it ->
+                Log.i("Values", "value=$it")
+                Toast.makeText(requireContext(), "value=$it", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
         val menuButton: ImageButton = requireView().findViewById(R.id.menuButton)
 
         menuButton.setOnClickListener {
-            Toast.makeText(requireContext(), "test", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(requireContext(), "test", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -1,30 +1,29 @@
 package com.example.aplikacja
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import android.widget.Button
+import android.widget.EditText
+import java.io.*
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class EditCarFragment : Fragment() {
+
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
     private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
     private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
     private val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
     private val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
-    private val warningText = view?.findViewById<TextView>(R.id.secondScreen_warning)
-    private val addFirstCarTitleText = view?.findViewById<TextView>(R.id.addFirstCarTitle)
 
 
     override fun onCreateView(
@@ -37,77 +36,200 @@ class EditCarFragment : Fragment() {
         loadData()
     }
 
-    private fun loadData() {
-        val shearedPreferences =
-                requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+    private fun loadData(){
+        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
         val savedName = shearedPreferences?.getString("NAME_KEY", null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectTypeSpinnerText: String = selectTypeSpinner?.selectedItem.toString()
-        val selectBrandSpinnerText: String = selectBrandSpinner?.selectedItem.toString()
-        val selectModelSpinnerText: String = selectModelSpinner?.selectedItem.toString()
-        val addLicensePlateInputText: String = addLicensePlateInput?.text.toString().trim()
-        val addMeterStatusInputText: String = addMeterStatusInput?.text.toString().trim()
+        val fileNameLoad = "Vehicles.txt"
 
-        val fileNameVehicle = "Vehicle.txt"
-
-        context?.openFileInput(fileNameVehicle).use { stream ->
-            val Vehicle = stream?.bufferedReader().use {
+        context?.openFileInput(fileNameLoad).use { stream ->
+            val Expence = stream?.bufferedReader().use {
                 it?.readText()
             }
+            Log.d("TAG", "LOADED: $Expence")
 
-            //TODO Wczytanie danych z pliku do spinnerów
+            //Toast.makeText(requireContext(), "$Expence", Toast.LENGTH_SHORT).show();
+
+            val values = "$Expence" // Read List from somewhere
+            val lstValues: List<String> = values.split(";").map { it -> it.trim() }
+            lstValues.forEach { it ->
+                Log.i("Values", "value=$it")
+                Toast.makeText(requireContext(), "value=$it", Toast.LENGTH_SHORT).show();
+            }
+
+        }
 
 
-            loadData()
+        view.findViewById<Button>(R.id.addExpenceButton).setOnClickListener {
+            if (spinnersValid() && textFieldsValid()) {
 
-            view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
-                if (selectTypeSpinnerText.trim().length <= 0) {
-                    val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
-                    builder.setTitle("Error")
-                    builder.setMessage("Wybierz typ pojazdu!")
-                    builder.setIcon(R.drawable.ic_launcher_background)
 
-                    builder.setPositiveButton("OK") { dialog, which ->
-                        dialog.dismiss()
-                    }
-                } else if (selectBrandSpinnerText.trim().length <= 1) {
-                    val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
-                    builder.setTitle("Error")
-                    builder.setMessage("Wybierz markę pojazdu!")
-                    builder.setIcon(R.drawable.ic_launcher_background)
 
-                    builder.setPositiveButton("OK") { dialog, which ->
-                        dialog.dismiss()
-                    }
-                } else if (selectModelSpinnerText.trim().length <= 1) {
-                    val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
-                    builder.setTitle("Error")
-                    builder.setMessage("Wybierz model pojazdu!")
-                    builder.setIcon(R.drawable.ic_launcher_background)
+                val addMeterStatusInput = view.findViewById<EditText>(R.id.addAmountInput)
+                val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
+                val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
+                val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
+                val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
 
-                    builder.setPositiveButton("OK") { dialog, which ->
-                        dialog.dismiss()
-                    }
-                } else {
+                //Indywidualny TXT
+                val fileName = "Vehicles.txt"
+                var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}"
+                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
 
-                    val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-                    val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectExpenceType)
-                    val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-                    val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
-                    val addMeterStatusInput = view?.findViewById<EditText>(R.id.addAmountInput)
+                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
+                    output?.write(filebody.toByteArray())
 
-                    var filebody = "${selectTypeSpinner?.selectedItem};${selectBrandSpinner?.selectedItem};${selectModelSpinner?.selectedItem};${addLicensePlateInput?.text};${addMeterStatusInput?.text}&"
-
-                    context?.openFileOutput(fileNameVehicle, Context.MODE_PRIVATE).use { output ->
-                        output?.write(filebody.toByteArray())
-
-                        findNavController().navigate(R.id.action_Second_to_EkranGlowny)
-                    }
+                    output?.close()
                 }
+            }
+
+
+
+            findNavController().navigate(R.id.action_Second_to_EkranGlowny)
+        }
+        // ładuj tylko spinner Rodzaju
+        loadTypeSpinner(requireView().findViewById(R.id.selectTypeSpinner), R.array.vehicleTypesArray)
+    }
+
+    private fun loadTypeSpinner(spinner: Spinner, data: Int) {
+        ArrayAdapter.createFromResource(
+                requireActivity(),
+                data, // dane z xml'a
+                android.R.layout.simple_spinner_item // mapuj itemy na simple_spinner_item
+        ).also { adapter ->
+            // załaduj simple_spinner_item'y jako itemy dropdowna
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter // then załaduj cały "adapter"(?) do spinnera
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                // nadpisz metodę onItemSelected
+                override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+                    // po wybraniu opcji załaduj spinner Marki
+                    loadBrandSpinner(requireView().findViewById(R.id.selectExpenceType))
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+        }
+    }
+
+    private fun loadBrandSpinner(spinner: Spinner) {
+        val type = requireView().findViewById<Spinner>(R.id.selectTypeSpinner).selectedItem
+        val typeId = requireView().findViewById<Spinner>(R.id.selectTypeSpinner).selectedItemId
+        var data: Int
+        data = when {
+            // cars
+            type === resources.getString(R.string.type_car) -> { R.array.vehicleBrandsArray_Car }
+            type === resources.getString(R.string.type_motorcycle) -> { R.array.vehicleBrandsArray_Motorcycle }
+            type === resources.getString(R.string.type_truck) -> { R.array.vehicleBrandsArray_Truck }
+            else -> { R.array.empty } // opcja "Wybierz rodzaj" => wyczyśc spinner Marki
+        }
+        if (typeId == 0L) { // opcja "Wybierz rodzaj"
+            // wyczyść spinner Modelu
+            loadModelSpinner(requireView().findViewById(R.id.selectModelSpinner), true)
+        }
+        // załaduj spinner, tak jak zwykle
+        ArrayAdapter.createFromResource(
+                requireActivity(),
+                data,
+                android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+                    // po wybraniu marki załaduj spinner Modelu
+                    loadModelSpinner(requireView().findViewById(R.id.selectModelSpinner))
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+        }
+    }
+
+    private fun loadModelSpinner(spinner: Spinner, clear: Boolean = false) {
+        val brand = requireView().findViewById<Spinner>(R.id.selectExpenceType).selectedItem
+        var data: Int
+        if (!clear) { // jeżeli to nie jest czyszczenie spinnera, wybierz listę modeli
+            data = when {
+                // cars
+                brand === resources.getString(R.string.brand_audi) -> { R.array.vehicleModelsArray_Audi }
+                brand === resources.getString(R.string.brand_mazda) -> { R.array.vehicleModelsArray_Mazda }
+                brand === resources.getString(R.string.brand_mercedes) -> { R.array.vehicleModelsArray_Mercedes }
+                brand === resources.getString(R.string.brand_toyota) -> { R.array.vehicleModelsArray_Toyota }
+                brand === resources.getString(R.string.brand_volvo) -> { R.array.vehicleModelsArray_Volvo }
+                // motorcycles
+                brand === resources.getString(R.string.brand_bmw) -> { R.array.vehicleModelsArray_BMW }
+                brand === resources.getString(R.string.brand_harley) -> { R.array.vehicleModelsArray_HarleyDavidson }
+                brand === resources.getString(R.string.brand_honda) -> { R.array.vehicleModelsArray_Honda }
+                brand === resources.getString(R.string.brand_kawasaki) -> { R.array.vehicleModelsArray_Kawasaki }
+                brand === resources.getString(R.string.brand_suzuki) -> { R.array.vehicleModelsArray_Suzuki }
+                // trucks
+                brand === resources.getString(R.string.brand_daf) -> { R.array.vehicleModelsArray_DAF }
+                brand === resources.getString(R.string.brand_man) -> { R.array.vehicleModelsArray_MAN }
+                brand === resources.getString(R.string.brand_scania) -> { R.array.vehicleModelsArray_Scania }
+                brand === resources.getString(R.string.brand_iveco) -> { R.array.vehicleModelsArray_Iveco }
+                brand === resources.getString(R.string.brand_volvoTruck) -> { R.array.vehicleModelsArray_VolvoTruck }
+                else -> { R.array.empty } // opcja "Wybierz markę" => brak modeli do wybrania
+            }
+        } else {
+            // czyszczenie spinnera Modeli
+            data = R.array.empty
+        }
+
+        ArrayAdapter.createFromResource(
+                requireActivity(),
+                data,
+                android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+    }
+
+    private fun spinnersValid(): Boolean {
+        // sprawdza czy spinnery mają podane wartości i ewentualnie pokazuje error
+        return spinnerOptionValid(requireView().findViewById(R.id.selectTypeSpinner))
+                && spinnerOptionValid(requireView().findViewById(R.id.selectExpenceType))
+                && spinnerOptionValid(requireView().findViewById(R.id.selectModelSpinner));
+    }
+
+    private fun spinnerOptionValid(spinner: Spinner?): Boolean {
+        // sprawdza czy jeden konkretny spinner ma ustawioną wartość inną niż "Wybierz ..."
+        return if (spinner?.selectedItemId == 0L) {
+            requireView().findViewById<TextView>(R.id.secondScreen_warning)
+                    .text = resources.getString(R.string.warning_selectTypeBrandAndModel)
+            false
+        } else {
+            true
+        }
+    }
+
+    private fun textFieldsValid(): Boolean {
+        // sprawdza czy pola są uzupełnione i czy stan licznika to liczba
+        val warningText = requireView().findViewById<TextView>(R.id.secondScreen_warning)
+        val addLicensePlateInputNotEmpty = requireView().findViewById<EditText>(R.id.addPriceInput).text.toString().isNotEmpty()
+        val addMeterStatusInputText = requireView().findViewById<EditText>(R.id.addAmountInput).text.toString()
+        val addMeterStatusInputNotEmpty = addMeterStatusInputText.isNotEmpty()
+
+        return if (!addLicensePlateInputNotEmpty) { // jezeli rejestracja pusta
+            warningText.text = resources.getString(R.string.warning_licensePlateRequired)
+            false;
+        } else if (!addMeterStatusInputNotEmpty) { // jezeli stan licznika pusty
+            warningText.text = resources.getString(R.string.warning_meterStatusRequired)
+            false;
+        } else {
+            // spróbuj skonwertować wpisaną wartość na floata
+            val meterValue = try { addMeterStatusInputText.toFloat() } catch (error: NumberFormatException) { null }
+            // jeżeli się nie udało (wpisane litery) lub wartość jest <= 0: pokaż błąd
+            if (meterValue == null || meterValue <= 0F) {
+                warningText.text = resources.getString(R.string.warning_invalidMeterStatus)
+                false;
+            } else {
+                true;
             }
         }
     }

@@ -52,41 +52,29 @@ class AddExpenceFragment : Fragment() {
             val CarTag = "{$addLicensePlateInput.text}"
 
 
-            val selectExpenceType = view?.findViewById<Spinner>(R.id.selectExpenceType)
+            //val selectExpenceType = view?.findViewById<Spinner>(R.id.selectExpenceType)
             val addPriceInput = view?.findViewById<EditText>(R.id.addPriceInput)
             val addAmountInput = view?.findViewById<EditText>(R.id.addAmountInput)
             val addAdditionalInfo = view?.findViewById<EditText>(R.id.addAdditionalInfo)
+            val addExpenceName = view?.findViewById<EditText>(R.id.addExpenceName)
 
-            val fileNameCarTag = "Expence.txt"
-            var file = File(fileNameCarTag)
-            var fileExists = file.exists()
 
-            if (fileExists) {
-                val fileExpenceExist = "Expence.txt"
+            val fileExpenceExist = "Expence.txt"
 
-                context?.openFileInput(fileExpenceExist).use { stream ->
-                    val FileExist = stream?.bufferedReader().use {
-                        it?.readText()
-                    }
-                    Log.d("TAG", "LOADED: $Vehicle")
-
-                    val fileName = "Expence.txt"
-                    var filebody = "{$FileExist}&${addPriceInput?.text};${selectExpenceType?.selectedItem};${addPriceInput?.text};${addAmountInput?.text};${addAdditionalInfo?.text}&"
-                    context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
-                        output?.write(filebody.toByteArray())
-
-                        output?.close()
-                    }
+            context?.openFileInput(fileExpenceExist).use { stream ->
+                val FileExistText = stream?.bufferedReader().use {
+                    it?.readText()
                 }
-            } else {
-                //Indywidualny TXT
+                Log.d("TAG", "LOADED: $Vehicle")
+
+                //Toast.makeText(requireContext(), "$FileExistText", Toast.LENGTH_SHORT).show();
+
                 val fileName = "Expence.txt"
-                var filebody = "${selectExpenceType?.selectedItem};${addPriceInput?.text};${addAmountInput?.text};${addAdditionalInfo?.text}&"
+                var filebody = "$FileExistText;${addExpenceName?.text};${addPriceInput?.text};${addAmountInput?.text};${addAdditionalInfo?.text}"
                 context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
                     output?.write(filebody.toByteArray())
 
                     output?.close()
-
                 }
             }
         }
@@ -96,29 +84,62 @@ class AddExpenceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectExpenceType = view?.findViewById<Spinner>(R.id.selectExpenceType)
+        val addExpenceName = view?.findViewById<EditText>(R.id.addExpenceName)
         val addPriceInput = view?.findViewById<EditText>(R.id.addPriceInput)
         val addAmountInput = view?.findViewById<EditText>(R.id.addAmountInput)
         val addAdditionalInfo = view?.findViewById<EditText>(R.id.addAdditionalInfo)
         val warningText = view?.findViewById<TextView>(R.id.secondScreen_warning)
         val addFirstCarTitleText = view?.findViewById<TextView>(R.id.addFirstCarTitle)
 
-        loadData()
+        val addAmountInputString = requireView().findViewById<EditText>(R.id.addAmountInput).text.toString()
+        val addPriceInputString = requireView().findViewById<EditText>(R.id.addAmountInput).text.toString()
 
-        view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
-            if (selectExpenceType.trim().length <= 0) {
+        val addAmountInputNotEmpty = addAmountInputString.isNotEmpty()
+        val addPriceInputNotEmpty = addPriceInputString.isNotEmpty()
+
+        loadData()
+        //Toast.makeText(requireContext(), "Działa", Toast.LENGTH_SHORT).show();
+        view.findViewById<Button>(R.id.addExpenceButton).setOnClickListener {
+            //Toast.makeText(requireContext(), "Działa", Toast.LENGTH_SHORT).show();
+           // findNavController().navigate(R.id.action_addExpenceFragment_to_EkranGlownyFragment)
+         /*   if (addExpenceName.length() <= 0) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
                 builder.setTitle("Error")
-                builder.setMessage("Wybierz typ pojazdu!")
+                builder.setMessage("Wybierz typ kosztu!")
                 builder.setIcon(R.drawable.ic_launcher_background)
 
                 builder.setPositiveButton("OK") { dialog, which ->
                     dialog.dismiss()
+                    Toast.makeText(requireContext(), "1", Toast.LENGTH_SHORT).show();
                 }
-            } else {
+            }
+            else if (!addAmountInputNotEmpty) { // jezeli stan licznika pusty
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Error")
+                builder.setMessage("Wpisz ilość!")
+                builder.setIcon(R.drawable.ic_launcher_background)
+
+                builder.setPositiveButton("OK") { dialog, which ->
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(), "2", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else if (!addPriceInputNotEmpty) { // jezeli stan licznika pusty
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+                builder.setTitle("Error")
+                builder.setMessage("Wpisz cenę!")
+                builder.setIcon(R.drawable.ic_launcher_background)
+
+                builder.setPositiveButton("OK") { dialog, which ->
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(), "3", Toast.LENGTH_SHORT).show();
+                }
+            }else {*/
+                //Toast.makeText(requireContext(), "RAMPAMPAM", Toast.LENGTH_SHORT).show();
                     File()
-                    findNavController().navigate(R.id.action_addCarFragment_to_EkranGlownyFragment)
-                }
+
+                    findNavController().navigate(R.id.action_addExpenceFragment_to_EkranGlownyFragment)
+                //}
             }
         }
     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/SecondFragment">
+    app:startDestination="@id/EkranGlownyFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -34,11 +34,11 @@
         android:name="com.example.aplikacja.EkranGlownyFragment"
         android:label="EkranGlownyFragment" >
         <action
-            android:id="@+id/action_EkranGlownyFragment_to_addCarFragment"
-            app:destination="@id/addCarFragment" />
-        <action
             android:id="@+id/action_EkranGlownyFragment_to_editCarFragment"
             app:destination="@id/editCarFragment" />
+        <action
+            android:id="@+id/action_EkranGlownyFragment_to_addExpenceFragment"
+            app:destination="@id/addExpenceFragment" />
     </fragment>
 
     <fragment
@@ -52,9 +52,13 @@
     <fragment
         android:id="@+id/addCarFragment"
         android:name="com.example.aplikacja.AddCarFragment"
-        android:label="AddCarFragment" >
+        android:label="AddCarFragment" />
+    <fragment
+        android:id="@+id/addExpenceFragment"
+        android:name="com.example.aplikacja.AddExpenceFragment"
+        android:label="AddExpenceFragment" >
         <action
-            android:id="@+id/action_addCarFragment_to_EkranGlownyFragment"
+            android:id="@+id/action_addExpenceFragment_to_EkranGlownyFragment"
             app:destination="@id/EkranGlownyFragment" />
     </fragment>
 </navigation>

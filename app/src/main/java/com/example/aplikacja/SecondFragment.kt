@@ -43,8 +43,10 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
+        view.findViewById<Button>(R.id.addExpenceButton).setOnClickListener {
             if (spinnersValid() && textFieldsValid()) {
+
+
 
                 val addMeterStatusInput = view.findViewById<EditText>(R.id.addAmountInput)
                 val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
@@ -54,13 +56,25 @@ class SecondFragment : Fragment() {
 
                 //Indywidualny TXT
                 val fileName = "Vehicles.txt"
-                var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}&"
+                var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}"
+                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
 
                 context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
                     output?.write(filebody.toByteArray())
 
                      output?.close()
                 }
+
+                val fileName1 = "Expence.txt"
+                var filebody1 = ""
+                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+
+                context?.openFileOutput(fileName1, Context.MODE_PRIVATE).use { output ->
+                    output?.write(filebody1.toByteArray())
+
+                    output?.close()
+                }
+                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
             }
 
 

@@ -111,7 +111,7 @@ class AddCarFragment : Fragment() {
 
 
 
-        view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
+        view.findViewById<Button>(R.id.addExpenceButton).setOnClickListener {
             if (selectTypeSpinnerText.trim().length <= 0) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
                 builder.setTitle("Error")
@@ -141,7 +141,7 @@ class AddCarFragment : Fragment() {
                 }
             } else {
                     File()
-                    findNavController().navigate(R.id.action_addCarFragment_to_EkranGlownyFragment)
+                   // findNavController().navigate(R.id.action_addCarFragment_to_EkranGlownyFragment)
                 }
             }
         }
