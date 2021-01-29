@@ -18,5 +18,15 @@
             android:id="@+id/EkranGlownyFragment"
             android:icon="@drawable/icon_home"
             android:title="Ekran główny" />
+
+        <item
+            android:id="@+id/addExpenceFragment"
+            android:icon="@drawable/icon_expence"
+            android:title="Dodaj koszt" />
+
+        <item
+            android:id="@+id/editCarFragment"
+            android:icon="@drawable/icon_edit"
+            android:title="Edytuj dane pojazdu" />
     </group>
 </menu>

@@ -1,16 +1,17 @@
 package com.example.aplikacja
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.io.File
 
 
 class AddExpenceFragment : Fragment() {
@@ -33,8 +34,8 @@ class AddExpenceFragment : Fragment() {
     }
 
     private fun loadData() {
-        val shearedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
-        val savedName = shearedPreferences?.getString("NAME_KEY", null)
+        val sharedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val savedName = sharedPreferences?.getString("NAME_KEY", null)
     }
 
 

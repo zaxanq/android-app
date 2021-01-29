@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import android.widget.Button
-import android.widget.EditText
-import java.io.*
 
 
 /**
@@ -35,7 +32,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun loadData(){
-        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
         val savedName = sharedPreferences?.getString("NAME_KEY", null)
     }
 
@@ -52,6 +49,7 @@ class SecondFragment : Fragment() {
                 val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
 
 
+                //Indywidualny TXT
                 val fileName = "Vehicles.txt"
                 var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}"
                 //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
@@ -59,25 +57,19 @@ class SecondFragment : Fragment() {
                 context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
                     output?.write(filebody.toByteArray())
 
-//                    output?.close()
                     output?.close()
-
-                    context?.openFileOutput(fileNameGeneral, Context.MODE_PRIVATE).use { output ->
-                        output?.write(filebodyGeneral.toByteArray() )
-                        output?.close()
-                    }
                 }
-// ???
-//                val fileName1 = "Expence.txt"
-//                var filebody1 = ""
-//                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
-//
-//                context?.openFileOutput(fileName1, Context.MODE_PRIVATE).use { output ->
-//                    output?.write(filebody1.toByteArray())
-//
-//                    output?.close()
-//                }
-//                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+
+                val fileName1 = "Expence.txt"
+                var filebody1 = ""
+                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+
+                context?.openFileOutput(fileName1, Context.MODE_PRIVATE).use { output ->
+                    output?.write(filebody1.toByteArray())
+
+                    output?.close()
+                }
+                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
             }
 
             findNavController().navigate(R.id.action_Second_to_EkranGlowny)
