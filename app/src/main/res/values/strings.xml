@@ -59,7 +59,7 @@
     <!-- Dodaj koszt -->
     <string name="addexpenceScreen_addExpence">Dodaj koszt</string>
     <string name="addexpenceScreen_addAmount">Podaj ilość</string>
-    <string name="addexpenceScreen_addValue">Podaj cene</string>
+    <string name="addexpenceScreen_addValue">Podaj cenę</string>
     <string name="addexpenceScreen_addAdditionalInformation">Informacje dodatkowe</string>
 
 </resources>

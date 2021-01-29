@@ -34,7 +34,7 @@ class EditCarFragment : Fragment() {
 
     private fun loadData() {
         val sharedPreferences =
-            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
         val savedName = sharedPreferences?.getString("NAME_KEY", null)
     }
 
