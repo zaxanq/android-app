@@ -53,7 +53,7 @@
     <fragment
         android:id="@+id/addExpenceFragment"
         android:name="com.example.aplikacja.AddExpenceFragment"
-        android:label="AddExpenceFragment" >
+        android:label="Dodaj nowy wydatek" >
         <action
             android:id="@+id/action_addExpenceFragment_to_EkranGlownyFragment"
             app:destination="@id/EkranGlownyFragment" />
