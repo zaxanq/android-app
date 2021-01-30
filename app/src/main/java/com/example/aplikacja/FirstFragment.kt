@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import java.io.File
 
 /**
@@ -50,9 +49,7 @@ class FirstFragment : Fragment() {
         // POBIERZ DANE Z PREFERENCES
         loadData()
         if(savedName != "null" && savedName != ""){
-            Snackbar.make(view, "'" + savedName + "'", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-            findNavController().navigate(R.id.action_First_to_EkranGlowny)
+            findNavController().navigate(R.id.action_First_to_Second)
         }
 
         continueButton!!.setOnClickListener {
@@ -80,7 +77,7 @@ class FirstFragment : Fragment() {
     private fun saveData(){
         val insertedText = nameInput?.text.toString();
 
-        val sharedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences?.edit()
         editor?.apply{
             putString("NAME_KEY", insertedText)
@@ -89,7 +86,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun loadData() {
-        val sharedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         savedName = sharedPreferences.getString("NAME_KEY", null).toString()
     }
 

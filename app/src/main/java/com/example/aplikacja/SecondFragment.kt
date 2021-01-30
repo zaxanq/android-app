@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
  */
 class SecondFragment : Fragment() {
 
+    private var vehicleInserted: Boolean = false
     private val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
     private val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
     private val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
@@ -27,55 +28,75 @@ class SecondFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.second_screen, container, false)
-
-        loadData()
-    }
-
-    private fun loadData(){
-        val sharedPreferences = requireActivity().getSharedPreferences("sheredPrefs", Context.MODE_PRIVATE)
-        val savedName = sharedPreferences?.getString("NAME_KEY", null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
-            if (spinnersValid() && textFieldsValid()) {
-
-                val addMeterStatusInput = view.findViewById<EditText>(R.id.addMeterStatusInput)
-                val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
-                val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
-                val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
-                val addLicensePlateInput = view?.findViewById<EditText>(R.id.addLicensePlateInput)
+        loadData()
 
 
-                //Indywidualny TXT
-                val fileName = "Vehicles.txt"
-                var filebody = "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}"
-                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+        if (!vehicleInserted) {
+            view.findViewById<Button>(R.id.addCarButton).setOnClickListener {
+                if (spinnersValid() && textFieldsValid()) {
 
-                context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
-                    output?.write(filebody.toByteArray())
+                    val addMeterStatusInput = view.findViewById<EditText>(R.id.addMeterStatusInput)
+                    val selectTypeSpinner = view?.findViewById<Spinner>(R.id.selectTypeSpinner)
+                    val selectBrandSpinner = view?.findViewById<Spinner>(R.id.selectBrandSpinner)
+                    val selectModelSpinner = view?.findViewById<Spinner>(R.id.selectModelSpinner)
+                    val addLicensePlateInput =
+                        view?.findViewById<EditText>(R.id.addLicensePlateInput)
 
-                    output?.close()
+
+                    //Indywidualny TXT
+                    val fileName = "Vehicles.txt"
+                    var filebody =
+                        "${selectTypeSpinner.selectedItem};${selectBrandSpinner.selectedItem};${selectModelSpinner.selectedItem};${addLicensePlateInput.text};${addMeterStatusInput.text}"
+                    //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+
+                    context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
+                        output?.write(filebody.toByteArray())
+
+                        output?.close()
+                    }
+
+                    val fileName1 = "Expence.txt"
+                    var filebody1 = ""
+                    //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+
+                    context?.openFileOutput(fileName1, Context.MODE_PRIVATE).use { output ->
+                        output?.write(filebody1.toByteArray())
+
+                        output?.close()
+                    }
+                    //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
+                    saveData()
+                    findNavController().navigate(R.id.action_Second_to_EkranGlowny)
                 }
-
-                val fileName1 = "Expence.txt"
-                var filebody1 = ""
-                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
-
-                context?.openFileOutput(fileName1, Context.MODE_PRIVATE).use { output ->
-                    output?.write(filebody1.toByteArray())
-
-                    output?.close()
-                }
-                //Toast.makeText(requireContext(), "$filebody", Toast.LENGTH_SHORT).show();
             }
-
+            // ładuj tylko spinner Rodzaju
+            loadTypeSpinner(
+                requireView().findViewById(R.id.selectTypeSpinner),
+                R.array.vehicleTypesArray
+            )
+        } else {
             findNavController().navigate(R.id.action_Second_to_EkranGlowny)
+
         }
-        // ładuj tylko spinner Rodzaju
-        loadTypeSpinner(requireView().findViewById(R.id.selectTypeSpinner), R.array.vehicleTypesArray)
+    }
+
+    private fun saveData(){
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences?.edit()
+        editor?.apply{
+            putString("VEHICLE_INSERTED", "true")
+        }?.apply()
+
+    }
+
+    private fun loadData() {
+        val sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        vehicleInserted = sharedPreferences.getString("VEHICLE_INSERTED", "").toString().isNotEmpty()
     }
 
     private fun loadTypeSpinner(spinner: Spinner, data: Int) {

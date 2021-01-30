@@ -41,7 +41,7 @@
             android:text="@string/mainScreen_refuelingTitle"
             android:textSize="18sp"
             android:textAllCaps="true"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="@dimen/card_content_margin_h"
             android:layout_marginEnd="@dimen/card_content_margin_h"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,55 +49,55 @@
             app:layout_constraintTop_toBottomOf="parent"  />
 
         <!-- Wiersz "średnie spalanie" -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:layout_marginTop="40dp">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textAlignment="textStart"-->
+<!--            android:layout_marginTop="40dp">-->
 
-            <!-- XXX l/100 km -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/card_content_margin_h"
-                >
+<!--            &lt;!&ndash; XXX l/100 km &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/card_content_margin_h"-->
+<!--                >-->
 
-                <TextView
-                    android:id="@+id/avgConsumptionValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:text="6,42"
-                    android:textSize="20sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/avgConsumptionValue"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="6dp"-->
+<!--                    android:text="-.&#45;&#45;"-->
+<!--                    android:textSize="20sp" />-->
 
-                <TextView
-                    android:id="@+id/avgConsumptionText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="l/100km"
-                    android:textSize="16sp" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/avgConsumptionLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
-                android:text="@string/mainScreen_avgConsumptionLabel"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="76dp"
-                android:layout_marginEnd="@dimen/card_content_margin_h"
-                android:layout_marginBottom="@dimen/card_content_margin_v"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-        </RelativeLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/avgConsumptionText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="l/100km"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </LinearLayout>-->
+<!--            <TextView-->
+<!--                android:id="@+id/avgConsumptionLabel"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textAlignment="textEnd"-->
+<!--                android:text="@string/mainScreen_avgConsumptionLabel"-->
+<!--                android:textSize="16sp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginStart="76dp"-->
+<!--                android:layout_marginEnd="@dimen/card_content_margin_h"-->
+<!--                android:layout_marginBottom="@dimen/card_content_margin_v"-->
+<!--                app:layout_constraintStart_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="parent" />-->
+<!--        </RelativeLayout>-->
 
         <!-- Wiersz "średnia cena paliwa" -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
-            android:layout_marginTop="64dp">
+            android:layout_marginTop="40dp">
 
             <!-- XXX zł/1l -->
             <LinearLayout
@@ -109,7 +109,7 @@
                     android:id="@+id/avgPriceValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4,29"
+                    android:text="-.--"
                     android:textSize="20sp"
                     android:layout_marginEnd="6dp" />
                 <TextView
@@ -136,53 +136,53 @@
 
 
         <!-- Wiersz "ostatnie spalanie" -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:layout_marginTop="100dp">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textAlignment="textStart"-->
+<!--            android:layout_marginTop="100dp">-->
 
-            <!-- XXX l/100 km -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/card_content_margin_h"
-                >
-            <TextView
-                android:id="@+id/lastConsumptionValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="6,88"
-                android:textSize="20sp"
-                android:layout_marginEnd="6dp" />
-            <TextView
-                android:id="@+id/lastConsumptionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="l/100km"
-                android:textSize="16sp" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/lastConsumptionLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
-                android:text="@string/mainScreen_lastConsumptionLabel"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="76dp"
-                android:layout_marginEnd="@dimen/card_content_margin_h"
-                android:layout_marginBottom="@dimen/card_content_margin_v"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-        </RelativeLayout>
+<!--            &lt;!&ndash; XXX l/100 km &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/card_content_margin_h"-->
+<!--                >-->
+<!--            <TextView-->
+<!--                android:id="@+id/lastConsumptionValue"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="-.&#45;&#45;"-->
+<!--                android:textSize="20sp"-->
+<!--                android:layout_marginEnd="6dp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/lastConsumptionText"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="l/100km"-->
+<!--                android:textSize="16sp" />-->
+<!--            </LinearLayout>-->
+<!--            <TextView-->
+<!--                android:id="@+id/lastConsumptionLabel"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textAlignment="textEnd"-->
+<!--                android:text="@string/mainScreen_lastConsumptionLabel"-->
+<!--                android:textSize="16sp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginStart="76dp"-->
+<!--                android:layout_marginEnd="@dimen/card_content_margin_h"-->
+<!--                android:layout_marginBottom="@dimen/card_content_margin_v"-->
+<!--                app:layout_constraintStart_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="parent" />-->
+<!--        </RelativeLayout>-->
 
         <!-- Wiersz "ostatnia cena paliwa" -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
-            android:layout_marginTop="124dp">
+            android:layout_marginTop="76dp">
 
             <!-- XXX zł/1l -->
             <LinearLayout
@@ -194,7 +194,7 @@
                 android:id="@+id/lastPriceValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4,29"
+                android:text="-.--"
                 android:textSize="20sp"
                 android:layout_marginEnd="6dp" />
             <TextView
@@ -222,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="textEnd"
-                android:text="2020-10-07 (19 dni temu)"
+                android:text=""
                 android:textSize="13sp"
                 android:layout_marginTop="28dp"
                 android:layout_marginStart="76dp"
@@ -244,13 +244,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/refuelingCard">
 
-        <!--      nextMonthTitle   ??   -->
         <TextView
             android:id="@+id/nextMonthTitle2"
             android:layout_width="match_parent"
             android:textAlignment="center"
             android:layout_height="wrap_content"
-            android:text="@string/mainScreen_nextMonthTitle"
+            android:text="Ostatnie wydatki"
             android:textSize="18sp"
             android:textAllCaps="true"
             android:layout_marginTop="4dp"
@@ -260,63 +259,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"  />
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
             android:layout_marginTop="40dp"
-            android:layout_marginStart="@dimen/card_content_margin_h"
-            android:layout_marginEnd="@dimen/card_content_margin_h">
-            <TextView
-                android:id="@+id/insuranceLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mainScreen_insuranceLabel"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/insuranceValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
-                android:textSize="18sp"
-                android:text="do 27-11-2020" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:layout_marginTop="64dp"
-            android:layout_marginStart="@dimen/card_content_margin_h"
-            android:layout_marginEnd="@dimen/card_content_margin_h"
-            android:layout_marginBottom="@dimen/card_content_margin_v">
-            <TextView
-                android:id="@+id/serviceLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mainScreen_serviceLabel"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/serviceValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
-                android:text="ul. Krasińskiego 43B"
-                android:textSize="18sp" />
-        </LinearLayout>
+            android:layout_marginBottom="@dimen/card_content_margin_v"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nextMonthCard"
+            tools:listitem="@layout/card_view_item"/>
     </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nextMonthCard"
-        tools:listitem="@layout/card_view_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,16 +4,6 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <!--        Do wyjebania przed oddaniem -->
-        <item
-            android:id="@+id/FirstFragment"
-            android:title="pierwszy widok" />
-
-        <!--        Do wyjebania przed oddaniem -->
-        <item
-            android:id="@+id/SecondFragment"
-            android:title="drugi widok" />
-
         <item
             android:id="@+id/EkranGlownyFragment"
             android:icon="@drawable/icon_home"

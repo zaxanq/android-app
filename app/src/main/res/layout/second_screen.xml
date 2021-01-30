@@ -107,22 +107,6 @@
         app:layout_constraintTop_toBottomOf="@+id/addLicensePlateInput"
         android:importantForAutofill="no" />
 
-    <Button
-        android:id="@+id/addPhotoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="310dp"
-        android:height="100dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/secondScreen_addPhoto"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeterStatusInput"
-        app:rippleColor="@color/white" />
-
 
     <TextView
         android:id="@+id/secondScreen_warning"
@@ -130,13 +114,11 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textColor="@color/warning"
-        app:layout_constraintBottom_toTopOf="@+id/addCarButton"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addPhotoButton"
-        app:layout_constraintVertical_bias="1.0"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/addCarButton"
@@ -147,10 +129,9 @@
         android:backgroundTint="@color/white"
         android:text="@string/common_add"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondScreen_warning" />
+        app:layout_constraintBottom_toTopOf="@+id/secondScreen_warning" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
