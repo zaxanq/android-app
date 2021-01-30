@@ -2,7 +2,6 @@ package com.example.aplikacja
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +45,7 @@ class AddExpenceFragment : Fragment() {
             val Vehicle = stream?.bufferedReader().use {
                 it?.readText()
             }
-            Log.d("TAG", "LOADED: $Vehicle")
+//            Log.d("TAG", "LOADED: $Vehicle")
 
             val addLicensePlateInput = view?.findViewById<EditText>(R.id.addPriceInput)
             val CarTag = "{$addLicensePlateInput.text}"
@@ -65,12 +64,13 @@ class AddExpenceFragment : Fragment() {
                 val FileExistText = stream?.bufferedReader().use {
                     it?.readText()
                 }
-                Log.d("TAG", "LOADED: $Vehicle")
+//                Log.d("TAG", "LOADED: $Vehicle")
 
-                //Toast.makeText(requireContext(), "$FileExistText", Toast.LENGTH_SHORT).show();
+                val addPriceInputText = addPriceInput?.text?.replace(Regex("[,]"), ".")
+                val addAmountInputText = addAmountInput?.text?.replace(Regex("[,]"), ".")
 
                 val fileName = "Expence.txt"
-                var filebody = "$FileExistText;${addExpenceName?.text};${addPriceInput?.text};${addAmountInput?.text};${addAdditionalInfo?.text}"
+                var filebody = "${FileExistText}${addExpenceName?.text};${addPriceInputText};${addAmountInputText};${addAdditionalInfo?.text};"
                 context?.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
                     output?.write(filebody.toByteArray())
 

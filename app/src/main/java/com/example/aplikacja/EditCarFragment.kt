@@ -1,7 +1,6 @@
 package com.example.aplikacja
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,13 +45,13 @@ class EditCarFragment : Fragment() {
             val Expence = stream?.bufferedReader().use {
                 it?.readText()
             }
-            Log.d("TAG", "LOADED: $Expence")
+//            Log.d("TAG", "LOADED: $Expence")
 
             val values = "$Expence" // Read List from somewhere
-            val lstValues: List<String> = values.split(";").map { it -> it.trim() }
+            val lstValues: List<String> = values.split(";").map { it.trim() }
             var i: Int = 0
             lstValues.forEach { it ->
-                Log.i("Values", "value=$it")
+//                Log.i("Values", "value=$it")
                 if (i <= 2) {
                     dane[i] = znajdz(it, i, dane)
                 } else if (i >= 3) {
@@ -114,7 +113,6 @@ class EditCarFragment : Fragment() {
     }
 
     private fun  znajdz(cos: String, gdzie: Int, dane: Array<Any>): Int {
-        dane.map {item -> Log.i("dane", item.toString()) };
         if (gdzie == 0) { // typ
             if (cos == resources.getString(R.string.type_car)) {
                 return 1;

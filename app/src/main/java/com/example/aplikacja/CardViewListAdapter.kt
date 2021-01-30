@@ -12,7 +12,7 @@ internal class CardViewListAdapter : ListAdapter<CardViewItem, CardViewHolder>(
         CardViewHolder.create(parent)
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int): Unit =
-        holder.bindModelToView(getItem(position))
+        holder.bindModelToView(getItem(position), position)
 }
 
 private object ItemDiffCallback : DiffUtil.ItemCallback<CardViewItem>() {

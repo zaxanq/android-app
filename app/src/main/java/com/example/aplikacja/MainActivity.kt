@@ -1,7 +1,10 @@
 package com.example.aplikacja
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -30,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 //                .setAction("Action", null).show()
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
+        val headerView: View = navView.getHeaderView(0)
+        val navTitle: TextView = headerView.findViewById(R.id.navTitle)
         val navController = findNavController(R.id.nav_host_fragment)
 
         appBarConfiguration = AppBarConfiguration(setOf(
@@ -49,6 +54,8 @@ class MainActivity : AppCompatActivity() {
                 toolbar.navigationIcon = null;
             } else {
                 toolbar.navigationIcon = originalNavIcon;
+                val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+                navTitle.text = "Witaj " + sharedPreferences.getString("NAME_KEY", null).toString()
             }
         }
 

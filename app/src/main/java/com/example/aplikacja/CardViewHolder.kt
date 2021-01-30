@@ -5,13 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.lang.Math.round
 
 class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindModelToView(model: CardViewItem): Unit = with(itemView) {
-        val textView = this.findViewById<TextView>(R.id.testView)
+    fun bindModelToView(model: CardViewItem, position: Int): Unit = with(itemView) {
+        val leftText = this.findViewById<TextView>(R.id.leftText)
+        val rightText = this.findViewById<TextView>(R.id.rightText)
+        val wydatek: MutableList<String> = model.wydatki.subList(position * 4, position * 4 + 4).asReversed()
+        val rightContent = (round((wydatek[1].toFloat() * wydatek[2].toFloat()) * 100) / 100F).toString() + "zł"
+        var leftContent = wydatek[0]
+        if (wydatek[3] != "") {
+            leftContent = "$leftContent, " + wydatek[3]
+        }
 
-        textView.text = model.text
+        leftText.text = leftContent
+        rightText.text = rightContent
     }
 
     companion object {
